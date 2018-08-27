@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,900');
+
+body{
+  font-family: 'Montserrat', sans-serif;
+}
+
+.control-container{
+  background-image: url('./components/image/left.svg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+}
+.control-body{
+  height: 100vh;
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
