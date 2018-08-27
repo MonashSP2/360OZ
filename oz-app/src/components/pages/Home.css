@@ -1,0 +1,19 @@
+.button-container{
+  position: absolute;
+  left: -35%;
+  top: 35%;
+}
+.beforeExplanation{
+  font-family: 'Montserrat', sans-serif;
+  position: absolute;
+  left: 30%;
+  top: 32%;
+  padding-right: 50px;
+}
+.arriveExplanation{
+  font-family: 'Montserrat', sans-serif;
+  position: absolute;
+  left: 30%;
+  top: 55%;
+  padding-right: 50px;
+}

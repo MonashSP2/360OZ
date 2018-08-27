@@ -1,0 +1,42 @@
+.dropItem{
+  margin-top: 30px;
+  color: white;
+  border-bottom:2px solid #fff;
+}
+.submitSection{
+  margin-top: 30px;
+  margin-left: 80px;
+}
+.submit{
+  width: 200px;
+  height: 60px;
+  text-align: left;
+  padding-left: 20px;
+  border: 0px solid #444;
+  border-width: 0px 0px 0px 0px;
+  padding: 10px 30px 10px 30px;
+  box-shadow: 0px 1px 15px  rgba(0%,0%,0%,0.3);
+  font-size: 20px;
+}
+.submit::before {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  margin-left: -30px;
+  margin-top: -16px;
+  width: 10px;
+  height: 60px;
+  background-color: #FF8567;
+}
+.submit::after {
+  content: "";
+  background-image: url('../../image/arrow_forward.svg');
+  display: inline-block;
+  position: absolute;
+  margin-left: 70px;
+  margin-top: 2px;
+  background-repeat: no-repeat;
+  width: 8%;
+  height: 30%;
+  background-size:25px;
+}

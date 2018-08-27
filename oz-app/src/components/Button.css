@@ -1,0 +1,73 @@
+.buttonmargin{
+  margin-bottom: 100px;
+}
+.arriveButton{
+  width: 500px;
+  height: 80px;
+  text-align: left;
+  padding-left: 20px;
+  border: 0px solid #444;
+  border-width: 0px 0px 0px 0px;
+  padding: 10px 30px 10px 30px;
+  box-shadow: 0px 1px 15px  rgba(0%,0%,0%,0.3);
+  font-size: 20px;
+}
+.arriveButton::before {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  margin-left: -30px;
+  margin-top: -26px;
+  width: 10px;
+  height: 80px;
+  background-color: #FF8567;
+}
+.arriveButton::after {
+  content: "";
+  background-image: url('./image/arrow_forward.svg');
+  display: inline-block;
+  position: absolute;
+  margin-left: 100px;
+  margin-top: -3px;
+  background-repeat: no-repeat;
+  width: 7%;
+  height: 45%;
+}
+.beforeButton{
+  width: 500px;
+  height: 80px;
+  text-align: left;
+  padding-left: 20px;
+  border: 0px solid #444;
+  border-width: 0px 0px 0px 0px;
+  padding: 10px 30px 10px 30px;
+  box-shadow: 0px 1px 15px  rgba(0%,0%,0%,0.3);
+  font-size: 20px;
+}
+.beforeButton::before {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  margin-left: -30px;
+  margin-top: -26px;
+  width: 10px;
+  height: 80px;
+  background-color: #FF8567;
+}
+.beforeButton::after {
+  content: "";
+  background-image: url('./image/arrow_forward.svg');
+  display: inline-block;
+  position: absolute;
+  margin-left: 265px;
+  margin-top: -3px;
+  background-repeat: no-repeat;
+  width: 7%;
+  height: 45%;
+}
+span{
+  font-family:'Montserrat', sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  color: #5D5D5D;
+}

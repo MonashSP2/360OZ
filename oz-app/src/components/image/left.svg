@@ -7,15 +7,7 @@
         <rect id="path-1" x="0" y="0" width="631" height="1080"></rect>
         <linearGradient x1="0%" y1="100%" x2="100%" y2="0%" id="linearGradient-3">
             <stop stop-color="#7C8FEA" offset="0%"></stop>
-            <stop stop-color="#4C38E5" offset="100%"></stop>
-        </linearGradient>
-        <linearGradient x1="22.1378387%" y1="11.8439611%" x2="112.327408%" y2="92.2644474%" id="linearGradient-4">
-            <stop stop-color="#7C8FEA" offset="0%"></stop>
-            <stop stop-color="#4C38E5" offset="100%"></stop>
-        </linearGradient>
-        <linearGradient x1="0%" y1="0%" x2="100%" y2="84.3982675%" id="linearGradient-5">
-            <stop stop-color="#7C8FEA" offset="0%"></stop>
-            <stop stop-color="#4C38E5" offset="100%"></stop>
+            <stop stop-color="#464EE5" offset="100%"></stop>
         </linearGradient>
     </defs>
     <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -26,8 +18,8 @@
                 </mask>
                 <g id="Mask"></g>
                 <rect id="Rectangle" fill="url(#linearGradient-3)" mask="url(#mask-2)" transform="translate(317.000000, 540.000000) scale(1, -1) translate(-317.000000, -540.000000) " x="0" y="0" width="634" height="1080"></rect>
-                <circle id="Oval" fill="url(#linearGradient-4)" opacity="0.3" mask="url(#mask-2)" cx="-77" cy="262" r="420"></circle>
-                <circle id="Oval" fill="url(#linearGradient-5)" opacity="0.3" mask="url(#mask-2)" cx="454.5" cy="836.5" r="124.5"></circle>
+                <circle id="Oval" fill="url(#linearGradient-3)" opacity="0.3" mask="url(#mask-2)" cx="-37" cy="292" r="420"></circle>
+                <circle id="Oval" fill="url(#linearGradient-3)" opacity="0.3" mask="url(#mask-2)" cx="454.5" cy="836.5" r="124.5"></circle>
             </g>
         </g>
     </g>

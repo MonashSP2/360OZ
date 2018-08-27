@@ -1,0 +1,12 @@
+[
+  {"Group": "Fitness", "Name": "Melbourne Fitness Centre", "Description": "Health and Fitness Centres and Gymnasia Operation", "Suburb": "Melbourne (CBD)", "longitude": 144.9562175, "latitude": -37.81813804},
+  {"Group": "Living", "Name": "Kingsgate Private Hotel", "Description": "Accommodation", "Suburb": "Melbourne (CBD)", "longitude": 144.9555039, "latitude": -37.81708323},
+  {"Group": "Food", "Name": "Bergerac Restaurant", "Description": "Cafes and Restaurants", "Suburb": "Melbourne (CBD)", "longitude": 144.9555039, "latitude": -37.81708323},
+  {"Group": "Social Activities", "Name": "The Fiddler Pub", "Description": "Pubs, Taverns and Bars", "Suburb": "Melbourne (CBD)", "longitude": 144.955606, "latitude": -37.81782672},
+  {"Group": "Living", "Name": "Savoy Park Plaza International", "Description": "Accommodation", "Suburb": "Melbourne (CBD)", "longitude": 144.9539293, "latitude": -37.81777221},
+  {"Group": "Food", "Name": "O Sushi", "Description": "Takeaway Food Services", "Suburb": "Melbourne (CBD)", "longitude": 144.9679684, "latitude": -37.81310923},
+  {"Group": "Food", "Name": "Cafe Tono", "Description": "Cafes and Restaurants", "Suburb": "Melbourne (CBD)", "longitude": 144.9679684, "latitude": -37.81310923},
+  {"Group": "Food", "Name": "Teppenyaki Inn", "Description": "Cafes and Restaurants", "Suburb": "Melbourne (CBD)", "longitude": 144.9674537, "latitude": -37.81479918},
+  {"Group": "Healthcare", "Name": "Walter Williams Clinic", "Description": "Specialist Medical Services", "Suburb": "Melbourne (CBD)", "longitude": 144.9684885, "latitude": -37.81451942},
+  {"Group": "Living", "Name": "The Victoria Hotel", "Description": "Accommodation", "Suburb": "Melbourne (CBD)", "longitude": 144.9675297, "latitude": -37.81434123}
+]

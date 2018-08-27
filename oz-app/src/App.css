@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,900');
+@import '~antd/dist/antd.css';
 
 body{
   font-family: 'Montserrat', sans-serif;
@@ -9,12 +10,11 @@ body{
   background-size: cover;
   background-repeat: no-repeat;
   height: 100vh;
+
 }
 .control-body{
+  background-image: url('./components/image/bubble.svg');
+  background-size: cover;
+  background-repeat: no-repeat;
   height: 100vh;
-}
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
 }
