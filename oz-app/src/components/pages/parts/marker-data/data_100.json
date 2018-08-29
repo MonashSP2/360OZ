@@ -1,0 +1,7 @@
+[
+  {"Group": "Fitness", "Name": "Melbourne Fitness Centre", "Description": "Health and Fitness Centres and Gymnasia Operation", "Suburb": "Melbourne (CBD)", "longitude": 144.9562175, "latitude": -37.81813804},
+  {"Group": "Living", "Name": "Kingsgate Private Hotel", "Description": "Accommodation", "Suburb": "Melbourne (CBD)", "longitude": 144.9555039, "latitude": -37.81708323},
+  {"Group": "Food", "Name": "Bergerac Restaurant", "Description": "Cafes and Restaurants", "Suburb": "Melbourne (CBD)", "longitude": 144.9555039, "latitude": -37.81708323},
+  {"Group": "Healthcare", "Name": "Walter Williams Clinic", "Description": "Specialist Medical Services", "Suburb": "Melbourne (CBD)", "longitude": 144.9684885, "latitude": -37.81451942},
+  {"Group": "Living", "Name": "The Victoria Hotel", "Description": "Accommodation", "Suburb": "Melbourne (CBD)", "longitude": 144.9675297, "latitude": -37.81434123}
+]

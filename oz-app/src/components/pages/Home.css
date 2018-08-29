@@ -1,13 +1,13 @@
 .button-container{
   position: absolute;
   left: -35%;
-  top: 35%;
+  top: 43%;
 }
 .beforeExplanation{
   font-family: 'Montserrat', sans-serif;
   position: absolute;
   left: 30%;
-  top: 32%;
+  top: 38%;
   padding-right: 50px;
 }
 .arriveExplanation{
@@ -16,4 +16,16 @@
   left: 30%;
   top: 55%;
   padding-right: 50px;
+}
+#homeTitle{
+  font-family: 'Montserrat', sans-serif;
+  font-size: 50px;
+  color: #5B5B5B;
+  font-weight: 600;
+}
+#homeDesc{
+  font-family: 'Montserrat', sans-serif;
+  width: 400px;
+  font-size: 18px;
+
 }

@@ -16,14 +16,10 @@ class Before extends Component{
   regionSearch = async (e) => {
     e.preventDefault();
     const text = e.target.textContent
-    const campusText = /Select your campus(.*)Select top most populated areas/;
+    const campusText = /Select your campus(.*)Search/;
     const campusMatch = campusText.exec(text);
-    const rankText = /Select top most populated areas(.*)Search/;
-    const rankMatch = rankText.exec(text);
-    console.log(campusMatch[1],rankMatch[1])
     this.setState({
       campus: campusMatch[1],
-      rank: rankMatch[1],
       error: ""
     });
   }
@@ -42,8 +38,7 @@ class Before extends Component{
         </div>
         <div>
           <MapSection
-            campus = {this.state.campus}
-            rank = {this.state.rank} />
+            campus = {this.state.campus}/>
         </div>
       </div>
     )

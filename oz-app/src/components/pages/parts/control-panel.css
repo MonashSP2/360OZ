@@ -1,0 +1,130 @@
+#amusement:before {
+    content: "";
+    display: block;
+    background-color: #d32f2f;
+    width: 15px;
+    height: 15px;
+    float: left;
+    margin: 2px 8px 0 0;
+    border-radius: 2px;
+}
+#fitness:before {
+    content: "";
+    display: block;
+    background-color: #7b1fa2;
+    width: 15px;
+    height: 15px;
+    float: left;
+    margin: 2px 8px 0 0;
+    border-radius: 2px;
+}
+#food:before {
+    content: "";
+    display: block;
+    background-color: #ff370f;
+    width: 15px;
+    height: 15px;
+    float: left;
+    margin: 2px 8px 0 0;
+    border-radius: 2px;
+}
+#healthcare:before {
+    content: "";
+    display: block;
+    background-color: #303f9f;
+    width: 15px;
+    height: 15px;
+    float: left;
+    margin: 2px 8px 0 0;
+    border-radius: 2px;
+}
+#laundry:before {
+    content: "";
+    display: block;
+    background-color: #0288d1;
+    width: 15px;
+    height: 15px;
+    float: left;
+    margin: 2px 8px 0 0;
+    border-radius: 2px;
+}
+#living:before {
+    content: "";
+    display: block;
+    background-color: #00796b;
+    width: 15px;
+    height: 15px;
+    float: left;
+    margin: 2px 8px 0 0;
+    border-radius: 2px;
+}
+#security:before {
+    content: "";
+    display: block;
+    background-color: #689f38;
+    width: 15px;
+    height: 15px;
+    float: left;
+    margin: 2px 8px 0 0;
+    border-radius: 2px;
+}
+#social:before {
+    content: "";
+    display: block;
+    background-color: #fbc02d;
+    width: 15px;
+    height: 15px;
+    float: left;
+    margin: 2px 8px 0 0;
+    border-radius: 2px;
+}
+#sports:before {
+    content: "";
+    display: block;
+    background-color: #fb8c00;
+    width: 15px;
+    height: 15px;
+    float: left;
+    margin: 2px 8px 0 0;
+    border-radius: 2px;
+}
+#supermarkets:before {
+    content: "";
+    display: block;
+    background-color: #795548;
+    width: 15px;
+    height: 15px;
+    float: left;
+    margin: 2px 8px 0 0;
+    border-radius: 2px;
+}
+#universities:before {
+    content: "";
+    display: block;
+    background-color: #9e9e9e;
+    width: 15px;
+    height: 15px;
+    float: left;
+    margin: 2px 8px 0 0;
+    border-radius: 2px;
+}
+#restaurant:before {
+    content: "";
+    display: block;
+    background-color: #009688;
+    width: 15px;
+    height: 15px;
+    float: left;
+    margin: 2px 8px 0 0;
+    border-radius: 2px;
+}
+#chinese:before {
+    content: "";
+    display: block;
+    background-color: #00acc1;
+    width: 15px;
+    height: 15px;
+    float: left;
+    margin: 2px 8px 0 0;
+    border-radius: 2px;
+}

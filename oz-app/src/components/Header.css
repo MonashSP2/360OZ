@@ -1,5 +1,6 @@
 .navBar {
-  padding-top:  8px;
+  padding-top:  16px;
+  margin-top:  12px;
 }
 
 .navBar ul li{
@@ -7,12 +8,9 @@
   padding: 15px 20px 0 0;
 }
 
-.navBar ul li:nth-child(2){
-  padding-left: 10px;
-}
 
 .navBar ul li:nth-child(3){
-  padding-left: 90px;
+  padding-left: 150px;
   line-height:10px;
 }
 
@@ -29,3 +27,15 @@
   color: white;
   border-bottom:2px solid #fff;
  }
+#logo_img{
+  padding-bottom: 10px;
+  border-bottom:2px solid #fff;
+}
+#slogan{
+  position: absolute;
+  top: 9%;
+  left: 11.5%;
+  font-size: 14px;
+  color: white;
+  font-weight: 400;
+}

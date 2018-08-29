@@ -3,7 +3,7 @@
   color: white;
   border-bottom:2px solid #fff;
 }
-.submitSection{
+#submitSection{
   margin-top: 30px;
   margin-left: 80px;
 }
@@ -23,7 +23,7 @@
   display: inline-block;
   position: absolute;
   margin-left: -30px;
-  margin-top: -16px;
+  margin-top: -13px;
   width: 10px;
   height: 60px;
   background-color: #FF8567;
@@ -33,10 +33,17 @@
   background-image: url('../../image/arrow_forward.svg');
   display: inline-block;
   position: absolute;
-  margin-left: 70px;
-  margin-top: 2px;
+  margin-left: 50px;
+  margin-top: 6px;
   background-repeat: no-repeat;
   width: 8%;
   height: 30%;
   background-size:25px;
+}
+#dropCustome div div{
+  background-color:rgba(0, 0, 0, 0);
+  border-style: hidden;
+}
+#dropCustome div div div div{
+  color: white;
 }

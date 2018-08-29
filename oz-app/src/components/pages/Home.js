@@ -8,22 +8,14 @@ const Home = () => (
   <div>
     <div className="button-container">
       <Link to='/before'><BeforeButton /></Link>
-      <Link to='/After'><ChallengeButton /></Link>
     </div>
     <div className="beforeExplanation">
       <div>
-      <h2>Exploratory</h2>
+      <p id='homeTitle'>Your journey </p>
+      <p id='homeTitle'>starts here.</p>
       </div>
-      <div>
-      360OZ contains insights for Chinese International students planning to come to Melbourne for studies
-      </div>
-    </div>
-    <div className="arriveExplanation">
-      <div>
-      <h2>Challenge</h2>
-      </div>
-      <div>
-      Exciting 3-day plan to arrive, survive and immerse
+      <div id='homeDesc'>
+      <p >A guide to find the best place to live in OZ that will suit your needs.</p>
       </div>
     </div>
   </div>

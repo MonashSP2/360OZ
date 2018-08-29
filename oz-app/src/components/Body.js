@@ -9,7 +9,6 @@ class Body extends Component {
   render() {
     return (
       <main>
-        <Sign />
         <Switch>
           <Route exact path='/' component={Home}/>
           <Route path='/before' component={Before}/>

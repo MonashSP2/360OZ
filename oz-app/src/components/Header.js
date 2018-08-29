@@ -6,18 +6,14 @@ import { Switch } from 'antd';
 
 class Header extends Component{
 
-  onChange(checked) {
-    console.log(`switch to ${checked}`);
-  }
-
   render() {
     return (
         <nav className="navBar">
           <ul>
-            <Link to='/'><img src={logo} alt="logo" height="20"></img></Link>
-            <li> <Switch defaultChecked checkedChildren="英" unCheckedChildren="中" onChange={this.onChange} /></li>
+            <Link to='/'><img src={logo} alt="logo" height="40" id='logo_img'></img></Link>
+            <span id='slogan'>A view just for you</span>
+
             <li><Link to='/before'>BEFORE</Link></li>
-            <li><Link to='/after'>AFTER</Link></li>
           </ul>
         </nav>
     )

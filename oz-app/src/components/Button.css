@@ -35,7 +35,7 @@
 }
 .beforeButton{
   width: 500px;
-  height: 80px;
+  height: 120px;
   text-align: left;
   padding-left: 20px;
   border: 0px solid #444;
@@ -49,9 +49,9 @@
   display: inline-block;
   position: absolute;
   margin-left: -30px;
-  margin-top: -26px;
+  margin-top: -43px;
   width: 10px;
-  height: 80px;
+  height: 120px;
   background-color: #FF8567;
 }
 .beforeButton::after {
@@ -59,8 +59,8 @@
   background-image: url('./image/arrow_forward.svg');
   display: inline-block;
   position: absolute;
-  margin-left: 265px;
-  margin-top: -3px;
+  margin-left: 180px;
+  margin-top: 0px;
   background-repeat: no-repeat;
   width: 7%;
   height: 45%;
@@ -68,6 +68,6 @@
 span{
   font-family:'Montserrat', sans-serif;
   font-weight: 500;
-  font-size: 18px;
+  font-size: 24px;
   color: #5D5D5D;
 }
