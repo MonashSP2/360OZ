@@ -4,7 +4,7 @@ import MapGL, {FlyToInterpolator, Marker, Popup, NavigationControl} from 'react-
 import CityPin from './city-pin';
 import ControlPanel from './control-panel';
 import CITIES from './data_10.json';
-import jsondata from './ethnicity.geojson';
+import jsondata from './FinalEthnicity.geojson';
 import {defaultMapStyle, dataLayer} from './map-style.js';
 import {updatePercentiles} from './utils';
 import {fromJS} from 'immutable';
@@ -41,7 +41,6 @@ class MapSection extends Component{
     window.addEventListener('resize', this._resize);
     this._resize();
     requestJson(jsondata, (error, response) => {
-      if (error) throw error;
       if (!error) {
         this._loadData(response);
       }
@@ -69,29 +68,35 @@ class MapSection extends Component{
 
     _loadData = data => {
 
-    updatePercentiles(data, f => f.properties.population);
+    updatePercentiles(data, f => f.properties.chinese_population);
 
     const mapStyle = defaultMapStyle
       // Add geojson source to map
-      .setIn(['sources', 'incomeByState'], fromJS({type: 'geojson', data}))
+      .setIn(['sources', 'chinese_population'], fromJS({type: 'geojson', data}))
       // Add point layer to map
       .set('layers', defaultMapStyle.get('layers').push(dataLayer));
 
     this.setState({data, mapStyle});
   };
 
-  _updateSettings = (name, value) => {
-    if (name === 'year') {
-      this.setState({year: value});
+  _onHover = event => {
+    const {features, srcEvent: {offsetX, offsetY}} = event;
+    const hoveredFeature = features && features.find(f => f.layer.id === 'data');
 
-      const {data, mapStyle} = this.state;
-      if (data) {
-        updatePercentiles(data, f => f.properties.population[value]);
-        const newMapStyle = mapStyle.setIn(['sources', 'incomeByState', 'data'], fromJS(data));
-        this.setState({mapStyle: newMapStyle});
-      }
-    }
+    this.setState({hoveredFeature, x: offsetX, y: offsetY});
   };
+
+  _renderTooltip() {
+    const {hoveredFeature,x, y} = this.state;
+
+    return hoveredFeature && (
+      <div className="tooltip"
+        style={{left: x, top: y, backgroundColor:'#F08B6F',opacity:1 , color:'#FFF', padding:'5px', borderRadius:'5px'}}>
+        <div>Suburb: {hoveredFeature.properties.Suburb}</div>
+        <div>Population: {hoveredFeature.properties.Population}</div>
+      </div>
+    );
+  }
 
     _onViewportChange = viewport => this.setState({
     viewport: {...this.state.viewport, ...viewport}
@@ -106,15 +111,15 @@ class MapSection extends Component{
     this.setState({viewport});
   };
 
-  _renderCityMarker = (city, index) => {
-return (
-  <Marker key={`marker-${index}`}
-    longitude={city.longitude}
-    latitude={city.latitude} >
-    <CityPin size={15}/>
-  </Marker>
-);
-};
+    _renderCityMarker = (city, index) => {
+      return (
+        <Marker key={`marker-${index}`}
+          longitude={city.longitude}
+          latitude={city.latitude} >
+          <CityPin size={15}/>
+        </Marker>
+      );
+      };
 
 
     _renderPopup() {
@@ -153,13 +158,15 @@ handlebutton() {
         <MapGL
          {...viewport}
          {...settings}
-         mapStyle='mapbox://styles/pson0001/cjl9jf0iv3g542rmsrpmemlei'
+         mapStyle={mapStyle}
          onViewportChange={this._onViewportChange}
          dragToRotate={false}
-         mapboxApiAccessToken={MAPBOX_TOKEN}>
-         <button onClick={this.pop}>Add</button>
-{CITIES.map(this._renderCityMarker)}
-         {this._renderPopup()}
+         mapboxApiAccessToken={MAPBOX_TOKEN}
+         onHover={this._onHover}>
+         {this._renderTooltip()}
+
+         {CITIES.map(this._renderCityMarker)}
+
          <ControlPanel
          containerComponent={this.props.containerComponent}
          onClick={this._onStyleChange}></ControlPanel>
