@@ -55,7 +55,7 @@ export default class StyleControls extends PureComponent {
           <p id='sports'>Sports</p>
           <p id='supermarkets'>Supermarkets</p>
           <p id='universities'>Universities</p>
-          <p id='restaurant'>Restaurant/Cuisine</p>
+          <p id='restaurant'>Restaurant</p>
           <p id='chinese'>Chinese Cuisine</p>
 
 
