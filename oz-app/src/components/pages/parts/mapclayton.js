@@ -3,8 +3,8 @@ import './map.css';
 import MapGL, {FlyToInterpolator, Marker, Popup, NavigationControl} from 'react-map-gl';
 import ControlPanel from './control-panel';
 
-import AmusementPin from './marker-data/amuseument-pin';
-import Amusement from './marker-data/amusement.json';
+import RestaurantPin from './marker-data/amuseument-pin';
+import Restaurant from './marker-data/test.json';
 
 import jsondata from './population_15.geojson';
 import {defaultMapStyle, dataLayer} from './map-style.js';
@@ -41,6 +41,7 @@ class ClaytonMapSection extends Component{
       mapStyle: defaultMapStyle,
       data: null,
       hoveredFeature: null,
+      show:true,
     }
   };
 
@@ -151,17 +152,21 @@ class ClaytonMapSection extends Component{
     };
     _onStyleChange = popStyle => this.setState({popStyle});
 
-    _renderAmuseumentPin = (city, index) => {
+    _renderRestaurantPin = (city, index) => {
       return (
         <Marker key={`marker-${index}`}
           longitude={city.longitude}
           latitude={city.latitude} >
-          <AmusementPin size={30} onClick={() => this.setState({popupInfo: city})} />
+          <RestaurantPin size={30} onClick={() => this.setState({popupInfo: city})} />
         </Marker>
       );
     }
 
-
+toggle(){
+  this.setState({
+    show:!this.state.show
+  })
+}
 
   render(){
     const {viewport, settings, mapStyle} = this.state;
@@ -176,8 +181,14 @@ class ClaytonMapSection extends Component{
          onViewportChange={this._onViewportChange}
          dragToRotate={false}
          mapboxApiAccessToken={MAPBOX_TOKEN}
-         onHover={this._onHover}>
+         >
          {this._renderTooltip()}
+        {
+          this.state.show?
+          Restaurant.map(this._renderRestaurantPin):null
+        }
+
+         <button onClick={()=>this.toggle()}>Add</button>
 
           {this._renderPopup()}
           <div className="nav" style={navStyle}>
