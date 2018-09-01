@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './Button.css';
 
 const Before = () =>{
     return (
       <div className="buttonmargin">
-        <button type="button" className="beforeButton"><span>Before you arrive</span></button>
+        <button type="button" className="beforeButton"><span id='homeButton'>Before you arrive</span></button>
       </div>
     )
 }

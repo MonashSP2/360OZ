@@ -22,14 +22,14 @@ const navStyle = {
   padding: '10px'
 };
 
-class MapSection extends Component{
+class ParkvilleMapSection extends Component{
   constructor(props) {
     super(props);
     this.state = {
       viewport: {
-        latitude: -25.2744,
-        longitude: 133.7751,
-        zoom: 3,
+        latitude: -37.7840,
+        longitude: 144.9587,
+        zoom: 13,
         bearing: 0,
         pitch: 0,
         width: 500,
@@ -46,6 +46,7 @@ class MapSection extends Component{
 
 
     componentDidMount() {
+
     window.addEventListener('resize', this._resize);
     this._resize();
     requestJson(jsondata, (error, response) => {
@@ -188,4 +189,4 @@ class MapSection extends Component{
   }
 }
 
-export default MapSection;
+export default ParkvilleMapSection;

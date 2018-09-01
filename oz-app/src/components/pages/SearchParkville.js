@@ -1,11 +1,11 @@
 import React, { Component}  from 'react';
 import './Before.css';
 import Form from './parts/form';
-import MapSection from './parts/map';
+import ParkvilleMapSection from './parts/mapparkville';
 import ControlPanel from './parts/control-panel';
 import { Link } from 'react-router-dom';
 
-class Before extends Component{
+class Parkville extends Component{
   state = {
     interest: undefined,
     error: undefined
@@ -21,8 +21,6 @@ class Before extends Component{
       error: ""
     });
   }
-
-
   render(){
     return (
       <div>
@@ -35,11 +33,11 @@ class Before extends Component{
           </div>
         </div>
         <div>
-          <MapSection
+          <ParkvilleMapSection
             interest = {this.state.interest}/>
         </div>
       </div>
     )
   }
 }
-export default Before;
+export default Parkville;

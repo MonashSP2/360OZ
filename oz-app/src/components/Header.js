@@ -12,9 +12,9 @@ class Header extends Component{
           <ul>
             <Link to='/'><img src={logo} alt="logo" height="40" id='logo_img'></img></Link>
             <span id='slogan'>A view just for you</span>
-
-            <li><Link to='/before'>BEFORE</Link></li>
+            <li><Link to='/searchcampus'>BEFORE</Link></li>
           </ul>
+
         </nav>
     )
   }

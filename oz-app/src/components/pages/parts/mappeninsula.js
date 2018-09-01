@@ -22,14 +22,14 @@ const navStyle = {
   padding: '10px'
 };
 
-class MapSection extends Component{
+class PeninsulaMapSection extends Component{
   constructor(props) {
     super(props);
     this.state = {
       viewport: {
-        latitude: -25.2744,
-        longitude: 133.7751,
-        zoom: 3,
+        latitude: -38.1526,
+        longitude: 145.1361,
+        zoom: 13,
         bearing: 0,
         pitch: 0,
         width: 500,
@@ -188,4 +188,4 @@ class MapSection extends Component{
   }
 }
 
-export default MapSection;
+export default PeninsulaMapSection;

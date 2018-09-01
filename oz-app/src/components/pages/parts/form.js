@@ -10,12 +10,14 @@ function handleChange(value) {
 
 class Form extends Component{
   render(){
+
+
     return(
       <form onSubmit={this.props.regionSearch}>
 
         <div className="dropItem" id='dropCustome'>
           <Select
-          style={{ width: '99%',backgroundColor:'rgba(0, 0, 0, 0)', color:'white', fontFamily:'Montserrat', fontSize:'16px'}}
+          style={{ width: '100%',backgroundColor:'rgba(0, 0, 0, 0)', color:'#5B5B5B', fontFamily:'Montserrat', fontSize:'20px',}}
           placeholder="Select your campus"
           name="campus"
           onChange={handleChange}>
@@ -27,7 +29,8 @@ class Form extends Component{
         </div>
 
         <div id="submitSection">
-    		<button className="submit" style={{fontSize:'14px'}}><span>Search</span></button>
+          <button className="submit" ><span id='searchButton'>Search</span></button>
+
         </div>
     	</form>
     )

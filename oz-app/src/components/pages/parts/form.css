@@ -1,7 +1,7 @@
 .dropItem{
   margin-top: 30px;
   color: white;
-  border-bottom:2px solid #fff;
+  border-bottom:2px solid #5B5B5B;
 }
 #submitSection{
   margin-top: 30px;
@@ -16,14 +16,17 @@
   border-width: 0px 0px 0px 0px;
   padding: 10px 30px 10px 30px;
   box-shadow: 0px 1px 15px  rgba(0%,0%,0%,0.3);
-  font-size: 20px;
+  font-family:'Montserrat', sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  color: #5D5D5D;
 }
 .submit::before {
   content: "";
   display: inline-block;
   position: absolute;
   margin-left: -30px;
-  margin-top: -13px;
+  margin-top: -16px;
   width: 10px;
   height: 60px;
   background-color: #FF8567;
@@ -34,16 +37,37 @@
   display: inline-block;
   position: absolute;
   margin-left: 50px;
-  margin-top: 6px;
+  margin-top: 3px;
   background-repeat: no-repeat;
   width: 8%;
   height: 30%;
   background-size:25px;
+}
+#searchButton{
+  font-family:'Montserrat', sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+  color: #5D5D5D;
 }
 #dropCustome div div{
   background-color:rgba(0, 0, 0, 0);
   border-style: hidden;
 }
 #dropCustome div div div div{
-  color: white;
+  color: '#5B5B5B';
 }
+.inputCustome{
+  border-bottom:2px solid #fff;
+}
+#inputInterest{
+  padding-right: 200px;
+  background-color:rgba(0, 0, 0, 0);
+  border-style: hidden;
+  color: white;
+  font-size: 18px;
+  font-family:'Montserrat', sans-serif;
+}
+
+#inputInterest::placeholder {
+  font-family:'Montserrat', sans-serif;
+   color: white; }

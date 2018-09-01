@@ -2,7 +2,7 @@
   margin-bottom: 100px;
 }
 .arriveButton{
-  width: 500px;
+  width: 400px;
   height: 80px;
   text-align: left;
   padding-left: 20px;
@@ -35,7 +35,7 @@
 }
 .beforeButton{
   width: 500px;
-  height: 120px;
+  height: 100px;
   text-align: left;
   padding-left: 20px;
   border: 0px solid #444;
@@ -49,9 +49,9 @@
   display: inline-block;
   position: absolute;
   margin-left: -30px;
-  margin-top: -43px;
+  margin-top: -33px;
   width: 10px;
-  height: 120px;
+  height: 100px;
   background-color: #FF8567;
 }
 .beforeButton::after {
@@ -65,7 +65,7 @@
   width: 7%;
   height: 45%;
 }
-span{
+#homeButton{
   font-family:'Montserrat', sans-serif;
   font-weight: 500;
   font-size: 24px;

@@ -1,7 +1,7 @@
 import React, { Component}  from 'react';
 import './Before.css';
 import Form from './parts/form';
-import MapSection from './parts/map';
+import CaulfieldMapSection from './parts/mapcaulfield';
 import ControlPanel from './parts/control-panel';
 import { Link } from 'react-router-dom';
 
@@ -14,6 +14,7 @@ class Before extends Component{
   regionSearch = async (e) => {
     e.preventDefault();
     const text = e.target.textContent
+    console.log(e.target.textContent);
     const campusText = /Select your campus(.*)Search/;
     const campusMatch = campusText.exec(text);
     this.setState({
@@ -21,8 +22,6 @@ class Before extends Component{
       error: ""
     });
   }
-
-
   render(){
     return (
       <div>
@@ -35,7 +34,7 @@ class Before extends Component{
           </div>
         </div>
         <div>
-          <MapSection
+          <CaulfieldMapSection
             interest = {this.state.interest}/>
         </div>
       </div>

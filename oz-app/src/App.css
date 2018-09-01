@@ -1,12 +1,14 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,900');
 @import '~antd/dist/antd.css';
-
+* {
+  outline: none;
+}
 body{
   font-family: 'Montserrat', sans-serif;
 }
 
 .control-container{
-  background-image: url('./components/image/left.svg');
+  background-image: url('./components/image/left_bg.svg');
   background-size: cover;
   background-repeat: no-repeat;
   height: 100vh;

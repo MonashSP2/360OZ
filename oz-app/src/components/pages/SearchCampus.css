@@ -1,0 +1,36 @@
+#SearchContainer{
+  background-image: url(../image/search_bg.svg);
+  position: absolute;
+  left: -50.0%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+  width: 80vw;
+}
+.beforeSection{
+  background-color: white;
+  width: 413px;
+  height: 80px;
+  line-height: 57px;
+  text-align: left;
+  padding-left: 20px;
+  border: 0px solid #444;
+  border-width: 0px 0px 0px 0px;
+  padding: 10px 30px 10px 30px;
+  box-shadow: 0px 1px 15px  rgba(0%,0%,0%,0.3);
+  font-size: 20px;
+}
+.beforeSection::before {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  margin-left: -30px;
+  margin-top: -10px;
+  width: 10px;
+  height: 80px;
+  background-color: #FF8567;
+}
+.droplist{
+  margin-top: 40px;
+  margin-left: 100px;
+}

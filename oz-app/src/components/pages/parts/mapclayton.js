@@ -22,14 +22,14 @@ const navStyle = {
   padding: '10px'
 };
 
-class MapSection extends Component{
+class ClaytonMapSection extends Component{
   constructor(props) {
     super(props);
     this.state = {
       viewport: {
-        latitude: -25.2744,
-        longitude: 133.7751,
-        zoom: 3,
+        latitude: -37.9150,
+        longitude: 145.1300,
+        zoom: 13,
         bearing: 0,
         pitch: 0,
         width: 500,
@@ -46,21 +46,22 @@ class MapSection extends Component{
 
 
     componentDidMount() {
-    window.addEventListener('resize', this._resize);
-    this._resize();
-    requestJson(jsondata, (error, response) => {
-      if (!error) {
-        this._loadData(response);
+      const { longitude, latitude, zoom } = this.state.viewport;
+      window.addEventListener('resize', this._resize);
+      this._resize();
+      requestJson(jsondata, (error, response) => {
+        if (!error) {
+          this._loadData(response);
+        }
+      });
       }
-    });
-    }
 
     componentWillUnmount() {
+
     window.removeEventListener('resize', this._resize);
     }
 
     componentWillUpdate(campusPre){
-      console.log(this.props.campus,campusPre.campus);
       if(this.props.campus !== campusPre.campus){
         if( campusPre.campus == 'Clayton'){
           this._goToViewport(-37.9150,145.1300);
@@ -107,9 +108,14 @@ class MapSection extends Component{
     );
   }
 
-    _onViewportChange = viewport => this.setState({
+    _onViewportChange = (viewport) => {this.setState({
     viewport: {...this.state.viewport, ...viewport}
     });
+    const { longitude, latitude, zoom } = this.state.viewport;
+
+    console.log(longitude,latitude,zoom);
+
+  }
 
     _resize = () => this._onViewportChange({
     width: this.props.width || 870,
@@ -188,4 +194,4 @@ class MapSection extends Component{
   }
 }
 
-export default MapSection;
+export default ClaytonMapSection;

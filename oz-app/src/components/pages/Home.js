@@ -1,13 +1,12 @@
 import React from 'react'
 import BeforeButton from '../BeforeButton';
-import ChallengeButton from '../ChallengeButton';
 import './Home.css';
 import { Link } from 'react-router-dom';
 
 const Home = () => (
   <div>
     <div className="button-container">
-      <Link to='/before'><BeforeButton /></Link>
+      <Link to='/searchcampus'><BeforeButton /></Link>
     </div>
     <div className="beforeExplanation">
       <div>
