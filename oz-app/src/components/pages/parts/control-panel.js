@@ -24,17 +24,6 @@ export default class StyleControls extends PureComponent {
     };
   }
 
-  _onColorChange(name) {
-  if (name === 'restaurant'){
-    console.log('rrrrrr');
-  }
-  else if (name === 'market'){
-    console.log('mmmmmmm');
-  }else{
-    console.log('sssssss')
-  }
-}
-
   _onVisibilityChange(name, event) {
     const visibility = {...this.state.visibility, [name]: event.target.checked};
     console.log({visibility});

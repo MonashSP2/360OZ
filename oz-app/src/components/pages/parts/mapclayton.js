@@ -1,10 +1,10 @@
 import React,{Component} from "react";
 import './map.css';
 import MapGL, {FlyToInterpolator, Marker, Popup, NavigationControl} from 'react-map-gl';
-import ControlPanel from './control-panel';
 
 import RestaurantPin from './marker-data/amuseument-pin';
 import Restaurant from './marker-data/test.json';
+import Restaurant1 from './marker-data/test1.json';
 
 import jsondata from './population_15.geojson';
 import {defaultMapStyle, dataLayer} from './map-style.js';
@@ -41,7 +41,8 @@ class ClaytonMapSection extends Component{
       mapStyle: defaultMapStyle,
       data: null,
       hoveredFeature: null,
-      show:true,
+      show:false,
+      show_1:false,
     }
   };
 
@@ -61,21 +62,6 @@ class ClaytonMapSection extends Component{
 
     window.removeEventListener('resize', this._resize);
     }
-
-    componentWillUpdate(campusPre){
-      if(this.props.campus !== campusPre.campus){
-        if( campusPre.campus == 'Clayton'){
-          this._goToViewport(-37.9150,145.1300);
-        }else if (campusPre.campus == 'Caulfield') {
-          this._goToViewport(-37.8770,145.0443);
-        }else if (campusPre.campus == 'Parkville') {
-          this._goToViewport(-37.7840,144.9587);
-        }else if (campusPre.campus == 'Peninsula'){
-          this._goToViewport(-38.1526,145.1361);
-        }else {
-          this._goToViewport(-37.8136,144.9631);
-        }
-    }}
 
     _loadData = data => {
 
@@ -162,11 +148,17 @@ class ClaytonMapSection extends Component{
       );
     }
 
-toggle(){
-  this.setState({
-    show:!this.state.show
-  })
-}
+    toggle_show(){
+      this.setState({
+        show:!this.state.show
+      })
+    }
+    toggle_show_1(){
+      this.setState({
+        show_1:!this.state.show_1
+      })
+    }
+
 
   render(){
     const {viewport, settings, mapStyle} = this.state;
@@ -183,21 +175,36 @@ toggle(){
          mapboxApiAccessToken={MAPBOX_TOKEN}
          >
          {this._renderTooltip()}
+         {
+           this.state.show?
+           Restaurant.map(this._renderRestaurantPin):null
+         }
         {
-          this.state.show?
-          Restaurant.map(this._renderRestaurantPin):null
+          this.state.show_1?
+          Restaurant1.map(this._renderRestaurantPin):null
         }
 
-         <button onClick={()=>this.toggle()}>Add</button>
+
+        <div className="control-panel"
+        style={{background:'white', margin:'10px 10px 20px 670px',padding:'10px 20px 20px 20px',opacity:'0.8', borderRadius:'10px'}}>
+        <h3>
+          Chinese facility:
+        </h3>
+        <div>
+          <input type="checkbox" checked={ this.state.show }
+                    onChange={ ()=>this.toggle_show() }></input><label>Restaurant</label>
+        </div>
+        <div>
+          <input type="checkbox" checked={ this.state.show_1 }
+                    onChange={ ()=>this.toggle_show_1() }></input><label>Support</label>
+        </div>
+      </div>
 
           {this._renderPopup()}
           <div className="nav" style={navStyle}>
           <NavigationControl onViewportChange={this._updateViewport} />
         </div>
 
-         <ControlPanel
-         containerComponent={this.props.containerComponent}
-         onClick={this._onStyleChange}></ControlPanel>
      </MapGL>
    </div>
     </div>
