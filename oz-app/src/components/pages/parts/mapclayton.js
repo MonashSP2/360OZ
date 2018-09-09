@@ -48,14 +48,20 @@ class ClaytonMapSection extends Component {
             data: null,
             hoveredFeature: null,
             show: false,
-            show_1: false,
+            show_clinics: false,
+            show_communities: false,
+            show_stores: false,
             isLoaded: false,
-            items: [],
+            items: [],//restaurants
+            clinics:[],
+            stores:[],
+            communities:[],
         }
     };
 
 
     componentDidMount() {
+        // let interest = this.props.defau;
 
         const {longitude, latitude, zoom} = this.state.viewport;
         window.addEventListener('resize', this._resize);
@@ -153,6 +159,30 @@ class ClaytonMapSection extends Component {
                     items: json,
                 })
             });
+        fetch('http://localhost:3002/clinic/'+ xl + '/'+ yl + '/' + xh + '/' + yh + '/' )
+            .then(res => res.json())
+            .then(json => {
+                this.setState({
+                    isLoaded: true,
+                    clinics: json,
+                })
+            });
+        fetch('http://localhost:3002/community/'+ xl + '/'+ yl + '/' + xh + '/' + yh + '/' )
+            .then(res => res.json())
+            .then(json => {
+                this.setState({
+                    isLoaded: true,
+                    communities: json,
+                })
+            });
+        fetch('http://localhost:3002/store/'+ xl + '/'+ yl + '/' + xh + '/' + yh + '/' )
+            .then(res => res.json())
+            .then(json => {
+                this.setState({
+                    isLoaded: true,
+                    stores: json,
+                })
+            });
 
     }
 
@@ -206,32 +236,36 @@ class ClaytonMapSection extends Component {
         })
     }
 
-    toggle_show_1() {
+    toggle_show_clinic() {
         this.setState({
-            show_1: !this.state.show_1
+            show_clinics: !this.state.show_clinics
+        })
+    }
+    toggle_show_community() {
+        this.setState({
+            show_communities: !this.state.show_communities
+        })
+    }
+    toggle_show_store() {
+        this.setState({
+            show_stores: !this.state.show_stores
         })
     }
 
 
     render() {
-        const {viewport, settings, mapStyle, items, isLoaded} = this.state;
-        const {longitude, latitude, zoom} = this.state.viewport;
+        const {viewport, settings, mapStyle, items, isLoaded,interest,clinics,communities,stores} = this.state;
+        // const {longitude, latitude, zoom} = this.state.viewport;
 
 
 
         return (
             <div>
                 <h3>
-                    {longitude},{latitude}
+                    {interest}
                 </h3>
                 {/*<h3>*/}
-                {/*<ul>*/}
-                {/*{items.map(item => (*/}
-                {/*<li key={item.id}>*/}
-                {/*{item._id}*/}
-                {/*</li>*/}
-                {/*))};*/}
-                {/*</ul>*/}
+
                 {/*</h3>*/}
                 <div id="mapBox">
                     <MapGL
@@ -248,8 +282,16 @@ class ClaytonMapSection extends Component {
                                 items.map(this._renderRestaurantPin):null
                         }
                         {
-                            this.state.show_1 ?
-                                Restaurant1.map(this._renderRestaurantPin) : null
+                            this.state.show_clinics ?
+                                clinics.map(this._renderRestaurantPin) : null
+                        }
+                        {
+                            this.state.show_communities ?
+                                communities.map(this._renderRestaurantPin) : null
+                        }
+                        {
+                            this.state.show_stores ?
+                                stores.map(this._renderRestaurantPin) : null
                         }
 
 
@@ -269,8 +311,16 @@ class ClaytonMapSection extends Component {
                                        onChange={() => this.toggle_show()}></input><label>Restaurant</label>
                             </div>
                             <div>
-                                <input type="checkbox" checked={this.state.show_1}
-                                       onChange={() => this.toggle_show_1()}></input><label>Support</label>
+                                <input type="checkbox" checked={this.state.show_clinics}
+                                       onChange={() => this.toggle_show_clinic()}></input><label>Clinic</label>
+                            </div>
+                            <div>
+                                <input type="checkbox" checked={this.state.show_communities}
+                                       onChange={() => this.toggle_show_community()}></input><label>Community</label>
+                            </div>
+                            <div>
+                                <input type="checkbox" checked={this.state.show_stores}
+                                       onChange={() => this.toggle_show_store()}></input><label>Grocery Store</label>
                             </div>
 
                         </div>
