@@ -151,7 +151,8 @@ class ClaytonMapSection extends Component {
         const xh = latitude + 0.005*zoom;
         const yh = longitude + 0.005*zoom;
         //
-        fetch('http://localhost:3002/restaurants/'+ xl + '/'+ yl + '/' + xh + '/' + yh + '/' )
+        // fetch('http://localhost:3002/restaurants/'+ xl + '/'+ yl + '/' + xh + '/' + yh + '/' )
+        fetch('http://35.189.58.222/restaurants/'+ xl + '/'+ yl + '/' + xh + '/' + yh + '/' )
             .then(res => res.json())
             .then(json => {
                 this.setState({
@@ -159,7 +160,7 @@ class ClaytonMapSection extends Component {
                     items: json,
                 })
             });
-        fetch('http://localhost:3002/clinic/'+ xl + '/'+ yl + '/' + xh + '/' + yh + '/' )
+        fetch('http://35.189.58.222/clinic/'+ xl + '/'+ yl + '/' + xh + '/' + yh + '/' )
             .then(res => res.json())
             .then(json => {
                 this.setState({
@@ -167,7 +168,7 @@ class ClaytonMapSection extends Component {
                     clinics: json,
                 })
             });
-        fetch('http://localhost:3002/community/'+ xl + '/'+ yl + '/' + xh + '/' + yh + '/' )
+        fetch('http://35.189.58.222/community/'+ xl + '/'+ yl + '/' + xh + '/' + yh + '/' )
             .then(res => res.json())
             .then(json => {
                 this.setState({
@@ -175,7 +176,7 @@ class ClaytonMapSection extends Component {
                     communities: json,
                 })
             });
-        fetch('http://localhost:3002/store/'+ xl + '/'+ yl + '/' + xh + '/' + yh + '/' )
+        fetch('http://35.189.58.222/store/'+ xl + '/'+ yl + '/' + xh + '/' + yh + '/' )
             .then(res => res.json())
             .then(json => {
                 this.setState({
