@@ -16,7 +16,8 @@ class Clayton extends Component{
 
   interestSearch = async (e) => {
     e.preventDefault();
-    const text = e.target.elements.interest.value
+    const text = e.target.elements.interest.value;
+    this.setState({interest:text});
     console.log(text);
   }
   render(){

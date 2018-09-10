@@ -4,6 +4,11 @@ import MapGL, {FlyToInterpolator, Marker, Popup, NavigationControl} from 'react-
 
 
 import RestaurantPin from './marker-data/amuseument-pin';
+import ClinicPin from './marker-data/clinic-pin';
+import CommunityPin from './marker-data/community-pin';
+import StorePin from './marker-data/store-pin';
+import InterestPin from './marker-data/interest-pin';
+
 import Restaurant from './marker-data/test.json';
 // import Restaurant from './marker-data/chinese';
 import Restaurant1 from './marker-data/test1.json';
@@ -51,11 +56,13 @@ class ClaytonMapSection extends Component {
             show_clinics: false,
             show_communities: false,
             show_stores: false,
+            show_interests: false,
             isLoaded: false,
             items: [],//restaurants
-            clinics:[],
-            stores:[],
-            communities:[],
+            clinics: [],
+            stores: [],
+            communities: [],
+            interests: []
         }
     };
 
@@ -144,15 +151,16 @@ class ClaytonMapSection extends Component {
             viewport: {...this.state.viewport, ...viewport}
         });
         const {longitude, latitude, zoom} = this.state.viewport;
+        const interest = this.props.interest;
 
         console.log(longitude, latitude, zoom);
-        const xl = latitude - 0.005*zoom;
-        const yl = longitude - 0.005*zoom;
-        const xh = latitude + 0.005*zoom;
-        const yh = longitude + 0.005*zoom;
+        const xl = latitude - 0.005 * zoom;
+        const yl = longitude - 0.005 * zoom;
+        const xh = latitude + 0.005 * zoom;
+        const yh = longitude + 0.005 * zoom;
         //
         // fetch('http://localhost:3002/restaurants/'+ xl + '/'+ yl + '/' + xh + '/' + yh + '/' )
-        fetch('http://35.189.58.222/restaurants/'+ xl + '/'+ yl + '/' + xh + '/' + yh + '/' )
+        fetch('http://35.189.58.222/restaurants/' + xl + '/' + yl + '/' + xh + '/' + yh + '/')
             .then(res => res.json())
             .then(json => {
                 this.setState({
@@ -160,7 +168,7 @@ class ClaytonMapSection extends Component {
                     items: json,
                 })
             });
-        fetch('http://35.189.58.222/clinic/'+ xl + '/'+ yl + '/' + xh + '/' + yh + '/' )
+        fetch('http://35.189.58.222/clinic/' + xl + '/' + yl + '/' + xh + '/' + yh + '/')
             .then(res => res.json())
             .then(json => {
                 this.setState({
@@ -168,7 +176,7 @@ class ClaytonMapSection extends Component {
                     clinics: json,
                 })
             });
-        fetch('http://35.189.58.222/community/'+ xl + '/'+ yl + '/' + xh + '/' + yh + '/' )
+        fetch('http://35.189.58.222/community/' + xl + '/' + yl + '/' + xh + '/' + yh + '/')
             .then(res => res.json())
             .then(json => {
                 this.setState({
@@ -176,12 +184,20 @@ class ClaytonMapSection extends Component {
                     communities: json,
                 })
             });
-        fetch('http://35.189.58.222/store/'+ xl + '/'+ yl + '/' + xh + '/' + yh + '/' )
+        fetch('http://35.189.58.222/store/' + xl + '/' + yl + '/' + xh + '/' + yh + '/')
             .then(res => res.json())
             .then(json => {
                 this.setState({
                     isLoaded: true,
                     stores: json,
+                })
+            });
+        fetch('http://35.189.58.222/interest/' + interest + '/' + latitude + '/' + longitude)
+            .then(res => res.json())
+            .then(json => {
+                this.setState({
+                    isLoaded: true,
+                    interests: json,
                 })
             });
 
@@ -226,7 +242,48 @@ class ClaytonMapSection extends Component {
             <Marker key={`marker-${index}`}
                     longitude={city.longitude}
                     latitude={city.latitude}>
-                <RestaurantPin size={30} onClick={() => this.setState({popupInfo: city})}/>
+                <RestaurantPin size={50} onClick={() => this.setState({popupInfo: city})}/>
+            </Marker>
+        );
+    }
+
+    _renderClinicPin = (city, index) => {
+        return (
+            <Marker key={`marker-${index}`}
+                    longitude={city.longitude}
+                    latitude={city.latitude}>
+                <ClinicPin size={50} onClick={() => this.setState({popupInfo: city})}/>
+            </Marker>
+        );
+    }
+
+    _renderCommunityPin = (city, index) => {
+        return (
+            <Marker key={`marker-${index}`}
+                    longitude={city.longitude}
+                    latitude={city.latitude}>
+                <CommunityPin size={50} onClick={() => this.setState({popupInfo: city})}/>
+            </Marker>
+        );
+    }
+
+    _renderStorePin = (city, index) => {
+        return (
+            <Marker key={`marker-${index}`}
+                    longitude={city.longitude}
+                    latitude={city.latitude}>
+                <StorePin size={50} onClick={() => this.setState({popupInfo: city})}/>
+            </Marker>
+        );
+    }
+
+
+    _renderInterestPin = (city, index) => {
+        return (
+            <Marker key={`marker-${index}`}
+                    longitude={city.longitude}
+                    latitude={city.latitude}>
+                <InterestPin size={40} onClick={() => this.setState({popupInfo: city})}/>
             </Marker>
         );
     }
@@ -242,11 +299,13 @@ class ClaytonMapSection extends Component {
             show_clinics: !this.state.show_clinics
         })
     }
+
     toggle_show_community() {
         this.setState({
             show_communities: !this.state.show_communities
         })
     }
+
     toggle_show_store() {
         this.setState({
             show_stores: !this.state.show_stores
@@ -254,16 +313,22 @@ class ClaytonMapSection extends Component {
     }
 
 
-    render() {
-        const {viewport, settings, mapStyle, items, isLoaded,interest,clinics,communities,stores} = this.state;
-        // const {longitude, latitude, zoom} = this.state.viewport;
+    toggle_show_interests() {
+        this.setState({
+            show_interests: !this.state.show_interests
+        })
+    }
 
+
+    render() {
+        const {viewport, settings, mapStyle, items, isLoaded, interests, clinics, communities, stores} = this.state;
+        // const {longitude, latitude, zoom} = this.state.viewport;
 
 
         return (
             <div>
                 <h3>
-                    {interest}
+                    {this.props.interest}
                 </h3>
                 {/*<h3>*/}
 
@@ -279,22 +344,26 @@ class ClaytonMapSection extends Component {
                     >
                         {/*{this._renderTooltip()}*/}
                         {
-                            this.state.show?
-                                items.map(this._renderRestaurantPin):null
+                            this.state.show ?
+                                items.map(this._renderRestaurantPin) : null
                         }
                         {
                             this.state.show_clinics ?
-                                clinics.map(this._renderRestaurantPin) : null
+                                clinics.map(this._renderClinicPin) : null
                         }
                         {
                             this.state.show_communities ?
-                                communities.map(this._renderRestaurantPin) : null
-                        }
-                        {
-                            this.state.show_stores ?
-                                stores.map(this._renderRestaurantPin) : null
+                                communities.map(this._renderCommunityPin) : null
                         }
 
+                        {
+                            this.state.show_stores ?
+                                stores.map(this._renderStorePin) : null
+                        }
+                        {
+
+                            interests.map(this._renderInterestPin)
+                        }
 
                         <div className="control-panel"
                              style={{
@@ -321,7 +390,8 @@ class ClaytonMapSection extends Component {
                             </div>
                             <div>
                                 <input type="checkbox" checked={this.state.show_stores}
-                                       onChange={() => this.toggle_show_store()}></input><label>Grocery Store</label>
+                                       onChange={() => this.toggle_show_store()}></input><label>Grocery
+                                Store</label>
                             </div>
 
                         </div>
