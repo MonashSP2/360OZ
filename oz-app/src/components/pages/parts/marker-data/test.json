@@ -1,8 +1,14 @@
 [
-  {"Name": "Urban Camp Melbourne Co-Operative",
-  "Description": "Amusement and Other Recreational Activities n.e.c.",
-  "Suburb": "Parkville",
+  {"Name": "A",
+  "Description": "aaa",
+  "Suburb": "Clayton",
   "latitude": -37.91736994568565,
+  "longitude": 145.1323174285884,
+  "Group": "Amusement Parks and Game Center"},
+  {"Name": "B",
+  "Description": "bbb",
+  "Suburb": "Parkville",
+  "latitude": -37.91236994568565,
   "longitude": 145.1323174285884,
   "Group": "Amusement Parks and Game Center"}
 ]

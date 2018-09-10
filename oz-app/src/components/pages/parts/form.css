@@ -1,5 +1,5 @@
 .dropItem{
-  margin-top: 30px;
+  margin-top: 70px;
   color: white;
   border-bottom:2px solid #5B5B5B;
 }
@@ -7,8 +7,13 @@
   margin-top: 30px;
   margin-left: 80px;
 }
+#submitButtonSection{
+  position: absolute;
+  top: 45%;
+  right: -55%;
+}
 .submit{
-  width: 200px;
+  width: 180px;
   height: 60px;
   text-align: left;
   padding-left: 20px;
@@ -16,7 +21,6 @@
   border-width: 0px 0px 0px 0px;
   padding: 10px 30px 10px 30px;
   box-shadow: 0px 1px 15px  rgba(0%,0%,0%,0.3);
-  font-family:'Montserrat', sans-serif;
   font-weight: 500;
   font-size: 16px;
   color: #5D5D5D;
@@ -31,24 +35,12 @@
   height: 60px;
   background-color: #FF8567;
 }
-.submit::after {
-  content: "";
-  background-image: url('../../image/arrow_forward.svg');
-  display: inline-block;
-  position: absolute;
-  margin-left: 50px;
-  margin-top: 3px;
-  background-repeat: no-repeat;
-  width: 8%;
-  height: 30%;
-  background-size:25px;
-}
 #searchButton{
-  font-family:'Montserrat', sans-serif;
   font-weight: 500;
   font-size: 20px;
   color: #5D5D5D;
 }
+
 #dropCustome div div{
   background-color:rgba(0, 0, 0, 0);
   border-style: hidden;
@@ -65,9 +57,27 @@
   border-style: hidden;
   color: white;
   font-size: 18px;
-  font-family:'Montserrat', sans-serif;
 }
 
 #inputInterest::placeholder {
-  font-family:'Montserrat', sans-serif;
    color: white; }
+
+#inputLocation{
+ background-color:rgba(0, 0, 0, 0);
+ border-style: hidden;
+ color: #5D5D5D;
+ font-size: 18px;
+}
+
+#inputLocation::placeholder {
+  color: #5D5D5D; }
+
+.inputCustomeLocation{
+  margin-right: 50%;
+  border-bottom:2px solid #5D5D5D;
+  }
+#challengeSearchSection{
+  position: absolute;
+  top: 85%;
+  right: 10%;
+}

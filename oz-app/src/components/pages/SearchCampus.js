@@ -29,7 +29,7 @@ class SearchCampus extends Component {
       <div className="button-container">
         <BeforeButton />
       </div>
-      <div className="beforeExplanation">
+      <div id="searchCampusStart">
         <div className="droplist">
         <Form regionSearch={this.regionSearch}/>
           {fireRedirect && (

@@ -1,0 +1,27 @@
+[
+  {"name": "Monash University(Parkville Campus)",
+  "description": "School",
+  "address": "Parkville",
+  "latitude": -37.783834725984775,
+  "longitude": 144.95879769626845,
+  "group": "School"},
+  {"name": "Monash University(Clayton Campus)",
+  "description": "School",
+  "address": "Clayton",
+  "latitude": -37.90993598321981,
+  "longitude": 145.13484224293433,
+  "group": "School"},
+  {"name": "Monash University(Caulfield Campus)",
+  "description": "School",
+  "address": "Caulfield",
+  "latitude": -37.8770,
+"longitude": 145.0443,
+  "group": "School"},
+  {"name": "Monash University(Peninsula Campus)",
+  "description": "School",
+  "address": "Peninsula",
+  "latitude": -38.1526,
+  "longitude": 145.1361,
+  "group": "School"}
+
+]

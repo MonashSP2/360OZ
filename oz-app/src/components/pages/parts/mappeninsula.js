@@ -1,191 +1,434 @@
-import React,{Component} from "react";
+import React, {Component} from "react";
 import './map.css';
 import MapGL, {FlyToInterpolator, Marker, Popup, NavigationControl} from 'react-map-gl';
-import ControlPanel from './control-panel';
 
-import AmusementPin from './marker-data/amuseument-pin';
-import Amusement from './marker-data/amusement.json';
+import SchoolPin from './marker-data/school-pin';
+import School from './marker-data/school.json';
 
-import jsondata from './population_15.geojson';
+import RestaurantPin from './marker-data/restaurant-pin';
+import ClinicPin from './marker-data/clinic-pin';
+import CommunityPin from './marker-data/community-pin';
+import StorePin from './marker-data/store-pin';
+import InterestPin from './marker-data/interest-pin';
+
+import jsondata from './Ethnicity.geojson';
 import {defaultMapStyle, dataLayer} from './map-style.js';
 import {updatePopulation} from './utils';
 import {fromJS} from 'immutable';
 import {json as requestJson} from 'd3-request';
 import CityInfo from './marker-data/city-info';
+import InterestInfo from './marker-data/interest-info';
+
 
 const MAPBOX_TOKEN = 'pk.eyJ1IjoicHNvbjAwMDEiLCJhIjoiY2pmeGZwdDc2NGEyNDMybnZuMDU0NTh6ZiJ9.NIPbcggFfW6c0tVUp9gvdA';
 
 const navStyle = {
-  position: 'absolute',
-  bottom: 30,
-  left: 0,
-  padding: '10px'
+    position: 'absolute',
+    bottom: 30,
+    left: 0,
+    padding: '10px'
 };
 
-class PeninsulaMapSection extends Component{
-  constructor(props) {
-    super(props);
-    this.state = {
-      viewport: {
-        latitude: -38.1526,
-        longitude: 145.1361,
-        zoom: 13,
-        bearing: 0,
-        pitch: 0,
-        width: 500,
-        height: 500,
-      },
-      campusPre:'',
-      popupInfo: null,
-      popStyle: '',
-      mapStyle: defaultMapStyle,
-      data: null,
-      hoveredFeature: null,
-    }
-  };
+class PeninsulaMapSection extends Component {
 
+    constructor(props) {
+        super(props);
+        this.state = {
+            viewport: {
+              latitude: -38.1526,
+              longitude: 145.1361,
+                zoom: 14,
+                bearing: 0,
+                pitch: 0,
+                width: 500,
+                height: 500,
+            },
+            campusPre: '',
+            popupInfo: null,
+            popStyle: '',
+            mapStyle: defaultMapStyle,
+            data: null,
+            hoveredFeature: null,
+            show: false,
+            show_clinics: false,
+            show_communities: false,
+            show_stores: false,
+            show_interests: false,
+            isLoaded: false,
+            items: [],//restaurants
+            clinics: [],
+            stores: [],
+            communities: [],
+            interests: []
+        }
+    };
+
+  componentDidUpdate(prevProps) {
+    const interest = this.props.interest;
+
+   if (this.props.interest !== prevProps.interest) {
+     this._onViewportChange()
+   }
+  }
 
     componentDidMount() {
-    window.addEventListener('resize', this._resize);
-    this._resize();
-    requestJson(jsondata, (error, response) => {
-      if (!error) {
-        this._loadData(response);
-      }
-    });
+        // let interest = this.props.defau;
+
+        const {longitude, latitude, zoom} = this.state.viewport;
+        window.addEventListener('resize', this._resize);
+        this._resize();
+        requestJson(jsondata, (error, response) => {
+            if (!error) {
+                this._loadData(response);
+            }
+        });
+
+
+        console.log(longitude, latitude, zoom);
+
     }
 
     componentWillUnmount() {
-    window.removeEventListener('resize', this._resize);
-    }
 
-    componentWillUpdate(campusPre){
-      console.log(this.props.campus,campusPre.campus);
-      if(this.props.campus !== campusPre.campus){
-        if( campusPre.campus == 'Clayton'){
-          this._goToViewport(-37.9150,145.1300);
-        }else if (campusPre.campus == 'Caulfield') {
-          this._goToViewport(-37.8770,145.0443);
-        }else if (campusPre.campus == 'Parkville') {
-          this._goToViewport(-37.7840,144.9587);
-        }else if (campusPre.campus == 'Peninsula'){
-          this._goToViewport(-38.1526,145.1361);
-        }else {
-          this._goToViewport(-37.8136,144.9631);
-        }
-    }}
+        window.removeEventListener('resize', this._resize);
+    }
 
     _loadData = data => {
 
-    updatePopulation(data, f => f.properties.chinese_population);
+        updatePopulation(data, f => f.properties.chinese_population);
 
-    const mapStyle = defaultMapStyle
-      // Add geojson source to map
-      .setIn(['sources', 'chinese_population'], fromJS({type: 'geojson', data}))
-      // Add point layer to map
-      .set('layers', defaultMapStyle.get('layers').push(dataLayer));
+        const mapStyle = defaultMapStyle
+        // Add geojson source to map
+            .setIn(['sources', 'chinese_population'], fromJS({type: 'geojson', data}))
+            // Add point layer to map
+            .set('layers', defaultMapStyle.get('layers').push(dataLayer));
 
-    this.setState({data, mapStyle});
-  };
+        this.setState({data, mapStyle});
+    };
 
-  _onHover = event => {
-    const {features, srcEvent: {offsetX, offsetY}} = event;
-    const hoveredFeature = features && features.find(f => f.layer.id === 'data');
+    _onHover = event => {
+        const {features, srcEvent: {offsetX, offsetY}} = event;
+        const hoveredFeature = features && features.find(f => f.layer.id === 'data');
 
-    this.setState({hoveredFeature, x: offsetX, y: offsetY});
-  };
+        this.setState({hoveredFeature, x: offsetX, y: offsetY});
+    };
 
-  _renderTooltip() {
-    const {hoveredFeature,x, y} = this.state;
+    _renderTooltip() {
+        const {hoveredFeature, x, y} = this.state;
 
-    return hoveredFeature && (
-      <div className="tooltip"
-        style={{left: 0, top: 0, width:'400px',fontFamily:'Montserrat', fontSize:'14px',backgroundColor:'#FF8567',opacity:1 , color:'#FFF', padding:'10px 10px 10px 10px', borderRadius:'5px'}}>
-        <div>Suburb: {hoveredFeature.properties.Suburb}</div>
-        <div>Population of Chinese Resident: {hoveredFeature.properties.Population}</div>
-      </div>
-    );
-  }
+        return hoveredFeature && (
+            <div className="tooltip"
+                 style={{
+                     left: x,
+                     top: y,
+                     fontFamily: 'Montserrat',
+                     fontSize: '14px',
+                     backgroundColor: '#FF8567',
+                     opacity: 1,
+                     color: '#FFF',
+                     padding: '10px 10px 10px 10px',
+                     borderRadius: '5px'
+                 }}>
+                <div>Suburb: {hoveredFeature.properties.Suburb}</div>
+                <div>Population of Chinese Resident: {hoveredFeature.properties.Population}</div>
+                <div>Count of Offence: {hoveredFeature.properties.OffenceCount}</div>
+                <div>Rental Rate of One Bed: {hoveredFeature.properties.RentalRate_1Bed_Flat}</div>
+            </div>
+        );
+    }
 
-    _onViewportChange = viewport => this.setState({
-    viewport: {...this.state.viewport, ...viewport}
-    });
+    _onViewportChange = (viewport) => {
+        this.setState({
+            viewport: {...this.state.viewport, ...viewport}
+        });
+        const {longitude, latitude, zoom} = this.state.viewport;
+        const interest = this.props.interest;
+
+        console.log(longitude, latitude, zoom);
+        const xl = latitude - 0.005 * zoom;
+        const yl = longitude - 0.005 * zoom;
+        const xh = latitude + 0.005 * zoom;
+        const yh = longitude + 0.005 * zoom;
+        //
+        // fetch('http://localhost:3002/restaurants/'+ xl + '/'+ yl + '/' + xh + '/' + yh + '/' )
+        fetch('http://35.189.58.222/restaurants/' + xl + '/' + yl + '/' + xh + '/' + yh + '/')
+            .then(res => res.json())
+            .then(json => {
+                this.setState({
+                    isLoaded: true,
+                    items: json,
+                })
+            });
+        fetch('http://35.189.58.222/clinic/' + xl + '/' + yl + '/' + xh + '/' + yh + '/')
+            .then(res => res.json())
+            .then(json => {
+                this.setState({
+                    isLoaded: true,
+                    clinics: json,
+                })
+            });
+        fetch('http://35.189.58.222/community/' + xl + '/' + yl + '/' + xh + '/' + yh + '/')
+            .then(res => res.json())
+            .then(json => {
+                this.setState({
+                    isLoaded: true,
+                    communities: json,
+                })
+            });
+        fetch('http://35.189.58.222/store/' + xl + '/' + yl + '/' + xh + '/' + yh + '/')
+            .then(res => res.json())
+            .then(json => {
+                this.setState({
+                    isLoaded: true,
+                    stores: json,
+                })
+            });
+        fetch('http://35.189.58.222/interest/' + interest + '/' + latitude + '/' + longitude)
+            .then(res => res.json())
+            .then(json => {
+                this.setState({
+                    isLoaded: true,
+                    interests: json,
+                })
+            });
+
+    }
 
     _resize = () => this._onViewportChange({
-    width: this.props.width || 870,
-    height: this.props.height || 650
+        width: this.props.width || 870,
+        height: this.props.height || 650
     });
 
     _updateViewport = (viewport) => {
-    this.setState({viewport});
-  };
+        this.setState({viewport});
+    };
 
-      _renderPopup() {
-         const {popupInfo} = this.state;
+    _renderPopup() {
+        const {popupInfo} = this.state;
 
-         return popupInfo && (
-           <Popup tipSize={5}
-             anchor="top"
-             longitude={popupInfo.longitude}
-             latitude={popupInfo.latitude}
-             onClose={() => this.setState({popupInfo: null})} >
-             <CityInfo info={popupInfo} />
-           </Popup>
-         );
-       }
+        return popupInfo && (
+            <Popup tipSize={5}
+                   anchor="top"
+                   longitude={popupInfo.longitude}
+                   latitude={popupInfo.latitude}
+                   onClose={() => this.setState({popupInfo: null})}>
+                <CityInfo info={popupInfo}/>
+            </Popup>
+        );
+    }
 
-    _goToViewport = (latitude,longitude) => {
-    this._onViewportChange({
-      latitude: latitude,
-      longitude: longitude,
-      zoom: 13,
-      transitionInterpolator: new FlyToInterpolator(),
-      transitionDuration: 800
-    });
+    _goToViewport = (latitude, longitude) => {
+        this._onViewportChange({
+            latitude: latitude,
+            longitude: longitude,
+            zoom: 13,
+            transitionInterpolator: new FlyToInterpolator(),
+            transitionDuration: 800
+        });
     };
     _onStyleChange = popStyle => this.setState({popStyle});
 
-    _renderAmuseumentPin = (city, index) => {
-      return (
-        <Marker key={`marker-${index}`}
-          longitude={city.longitude}
-          latitude={city.latitude} >
-          <AmusementPin size={30} onClick={() => this.setState({popupInfo: city})} />
-        </Marker>
-      );
+
+        _renderSchoolPin = (city, index) => {
+            return (
+                <Marker key={`marker-${index}`}
+                        longitude={city.longitude}
+                        latitude={city.latitude}>
+                    <SchoolPin size={50} onClick={() => this.setState({popupInfo: city})}/>
+                </Marker>
+            );
+        }
+
+    _renderRestaurantPin = (city, index) => {
+        return (
+            <Marker key={`marker-${index}`}
+                    longitude={city.longitude}
+                    latitude={city.latitude}>
+                <RestaurantPin size={30} onClick={() => this.setState({popupInfo: city})}/>
+            </Marker>
+        );
+    }
+
+    _renderClinicPin = (city, index) => {
+        return (
+            <Marker key={`marker-${index}`}
+                    longitude={city.longitude}
+                    latitude={city.latitude}>
+                <ClinicPin size={30} onClick={() => this.setState({popupInfo: city})}/>
+            </Marker>
+        );
+    }
+
+    _renderCommunityPin = (city, index) => {
+        return (
+            <Marker key={`marker-${index}`}
+                    longitude={city.longitude}
+                    latitude={city.latitude}>
+                <CommunityPin size={30} onClick={() => this.setState({popupInfo: city})}/>
+            </Marker>
+        );
+    }
+
+    _renderStorePin = (city, index) => {
+        return (
+            <Marker key={`marker-${index}`}
+                    longitude={city.longitude}
+                    latitude={city.latitude}>
+                <StorePin size={30} onClick={() => this.setState({popupInfo: city})}/>
+            </Marker>
+        );
     }
 
 
+    _renderInterestPin = (city, index) => {
+        return (
+            <Marker key={`marker-${index}`}
+                    longitude={city.longitude}
+                    latitude={city.latitude}>
+                <InterestPin size={40} onClick={() => this.setState({popupInfo: city})}/>
+            </Marker>
+        );
+    }
 
-  render(){
-    const {viewport, settings, mapStyle} = this.state;
+    toggle_show() {
+        this.setState({
+            show: !this.state.show
+        })
+    }
 
-    return(
-    <div>
-      <div id="mapBox">
-        <MapGL
-         {...viewport}
-         {...settings}
-         mapStyle={mapStyle}
-         onViewportChange={this._onViewportChange}
-         dragToRotate={false}
-         mapboxApiAccessToken={MAPBOX_TOKEN}
-         onHover={this._onHover}>
-         {this._renderTooltip()}
+    toggle_show_clinic() {
+        this.setState({
+            show_clinics: !this.state.show_clinics
+        })
+    }
 
-          {this._renderPopup()}
-          <div className="nav" style={navStyle}>
-          <NavigationControl onViewportChange={this._updateViewport} />
-        </div>
+    toggle_show_community() {
+        this.setState({
+            show_communities: !this.state.show_communities
+        })
+    }
 
-         <ControlPanel
-         containerComponent={this.props.containerComponent}
-         onClick={this._onStyleChange}></ControlPanel>
-     </MapGL>
-   </div>
-    </div>
-    )
-  }
+    toggle_show_store() {
+        this.setState({
+            show_stores: !this.state.show_stores
+        })
+    }
+
+
+    toggle_show_interests() {
+        this.setState({
+            show_interests: !this.state.show_interests
+        })
+    }
+
+
+    render() {
+        const {viewport, settings, mapStyle, items, isLoaded, interests, clinics, communities, stores} = this.state;
+        // const {longitude, latitude, zoom} = this.state.viewport;
+
+
+        return (
+            <div>
+                <div id="mapBox">
+                    <MapGL
+                        {...viewport}
+                        {...settings}
+                        mapStyle={mapStyle}
+                        onViewportChange={this._onViewportChange}
+                        dragToRotate={false}
+                        mapboxApiAccessToken={MAPBOX_TOKEN}
+                        onHover={this._onHover}
+                    >
+                    {this._renderTooltip()}
+
+                        {
+                            this.state.show ?
+                                items.map(this._renderRestaurantPin) : null
+                        }
+                        {
+                            this.state.show_clinics ?
+                                clinics.map(this._renderClinicPin) : null
+                        }
+                        {
+                            this.state.show_communities ?
+                                communities.map(this._renderCommunityPin) : null
+                        }
+
+                        {
+                            this.state.show_stores ?
+                                stores.map(this._renderStorePin) : null
+                        }
+                        {
+
+                            interests.map(this._renderInterestPin)
+                        }
+
+                        {School.map(this._renderSchoolPin)}
+
+                        <div className="control-panel"
+                             style={{
+                                 background: 'white',
+                                 margin: '10px 10px 20px 650px',
+                                 padding: '10px 20px 20px 20px',
+                                 opacity: '0.8',
+                                 borderRadius: '10px'
+                             }}>
+                            <h4>
+                                Chinese Facility:
+                            </h4>
+
+                            <div>
+                                <input type="checkbox" checked={this.state.show}
+                                       onChange={() => this.toggle_show()}></input><span style={{paddingLeft:'10px'}}>Restaurant</span>
+                            </div>
+                            <div>
+                                <input type="checkbox" checked={this.state.show_clinics}
+                                       onChange={() => this.toggle_show_clinic()}></input><span style={{paddingLeft:'10px'}}>Clinic</span>
+                            </div>
+                            <div>
+                                <input type="checkbox" checked={this.state.show_communities}
+                                       onChange={() => this.toggle_show_community()}></input><span style={{paddingLeft:'10px'}}>Community</span>
+                            </div>
+                            <div>
+                                <input type="checkbox" checked={this.state.show_stores}
+                                       onChange={() => this.toggle_show_store()}></input><span style={{paddingLeft:'10px'}}>Grocery Store</span>
+                            </div>
+                            <div style={{marginTop:'20px'}}>
+                            <span >Click marker for details</span>
+                            </div>
+                          </div>
+                          <div className="control-panel"
+                               style={{
+                                   background: 'white',
+                                   margin: '240px 10px 20px 650px',
+                                   padding: '10px 20px 20px 20px',
+                                   opacity: '0.8',
+                                   borderRadius: '10px'
+                               }}>
+                              <h4>
+                                  Chinese Population(2016)
+                              </h4>
+                              <div id='colorlegend'>
+                              </div>
+                              <span  style={{fontSize:'10px',paddingRight:'120px',paddingLeft:'10px'}}>20</span>
+                              <span  style={{fontSize:'10px'}}>6000</span>
+                              <div style={{paddingTop:'20px'}}>
+                              <span style={{fontSize:'10px'}}>
+                                Data Authorised from Australia Burae Statics
+                              </span>
+                              </div>
+                            </div>
+
+                        {this._renderPopup()}
+                        <div className="nav" style={navStyle}>
+                            <NavigationControl onViewportChange={this._updateViewport}/>
+                        </div>
+
+                    </MapGL>
+                </div>
+            </div>
+        )
+    }
 }
 
 export default PeninsulaMapSection;

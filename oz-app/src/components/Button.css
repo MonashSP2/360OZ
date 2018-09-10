@@ -2,8 +2,8 @@
   margin-bottom: 100px;
 }
 .arriveButton{
-  width: 400px;
-  height: 80px;
+  width: 500px;
+  height: 100px;
   text-align: left;
   padding-left: 20px;
   border: 0px solid #444;
@@ -17,9 +17,9 @@
   display: inline-block;
   position: absolute;
   margin-left: -30px;
-  margin-top: -26px;
+  margin-top: -36px;
   width: 10px;
-  height: 80px;
+  height: 100px;
   background-color: #FF8567;
 }
 .arriveButton::after {
@@ -27,8 +27,8 @@
   background-image: url('./image/arrow_forward.svg');
   display: inline-block;
   position: absolute;
-  margin-left: 100px;
-  margin-top: -3px;
+  margin-left: 50px;
+  margin-top: 0px;
   background-repeat: no-repeat;
   width: 7%;
   height: 45%;
@@ -49,7 +49,7 @@
   display: inline-block;
   position: absolute;
   margin-left: -30px;
-  margin-top: -33px;
+  margin-top: -36px;
   width: 10px;
   height: 100px;
   background-color: #FF8567;
@@ -59,7 +59,7 @@
   background-image: url('./image/arrow_forward.svg');
   display: inline-block;
   position: absolute;
-  margin-left: 180px;
+  margin-left: 230px;
   margin-top: 0px;
   background-repeat: no-repeat;
   width: 7%;
@@ -68,6 +68,6 @@
 #homeButton{
   font-family:'Montserrat', sans-serif;
   font-weight: 500;
-  font-size: 24px;
+  font-size: 20px;
   color: #5D5D5D;
 }

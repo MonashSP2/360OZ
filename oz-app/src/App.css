@@ -2,11 +2,8 @@
 @import '~antd/dist/antd.css';
 * {
   outline: none;
-}
-body{
   font-family: 'Montserrat', sans-serif;
 }
-
 .control-container{
   background-image: url('./components/image/left_bg.svg');
   background-size: cover;

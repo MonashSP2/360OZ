@@ -17,7 +17,7 @@ class Clayton extends Component{
   interestSearch = async (e) => {
     e.preventDefault();
     const text = e.target.elements.interest.value
-    console.log(text);
+    this.setState({interest:text})
   }
   render(){
     return (
@@ -33,7 +33,7 @@ class Clayton extends Component{
         </div>
         <div id = 'mapContainer'>
           <ClaytonMapSection
-            interest = {this.state.interest}/>
+            interest = {this.state.interest} />
         </div>
       </div>
     )

@@ -17,7 +17,7 @@ class Form extends Component{
 
         <div className="dropItem" id='dropCustome'>
           <Select
-          style={{ width: '100%',backgroundColor:'rgba(0, 0, 0, 0)', color:'#5B5B5B', fontFamily:'Montserrat', fontSize:'20px',}}
+          style={{ width: '300px',backgroundColor:'rgba(0, 0, 0, 0)', color:'#5B5B5B', fontSize:'20px',}}
           placeholder="Select your campus"
           name="campus"
           onChange={handleChange}>
@@ -29,7 +29,7 @@ class Form extends Component{
         </div>
 
         <div id="submitSection">
-          <button className="submit" ><span id='searchButton'>Search</span></button>
+          <button className="submit" id="submitButtonSection"><span id='searchButton'>Search</span></button>
 
         </div>
     	</form>

@@ -1,26 +1,22 @@
 import React, { Component}  from 'react';
 import './Before.css';
-import Form from './parts/form';
+import InterestForm from './parts/interestform';
+import './SearchClayton.css';
+
 import CaulfieldMapSection from './parts/mapcaulfield';
 import ControlPanel from './parts/control-panel';
 import { Link } from 'react-router-dom';
 
-class Before extends Component{
+class Caulfield extends Component{
   state = {
     interest: undefined,
     error: undefined
   }
 
-  regionSearch = async (e) => {
+  interestSearch = async (e) => {
     e.preventDefault();
-    const text = e.target.textContent
-    console.log(e.target.textContent);
-    const campusText = /Select your campus(.*)Search/;
-    const campusMatch = campusText.exec(text);
-    this.setState({
-      campus: campusMatch[1],
-      error: ""
-    });
+    const text = e.target.elements.interest.value
+    this.setState({interest:text})
   }
   render(){
     return (
@@ -30,7 +26,7 @@ class Before extends Component{
             <span className="beforeTitle">Before you arrive</span>
             </div>
             <div className="droplist">
-            <Form regionSearch={this.regionSearch}/>
+              <InterestForm interestSearch={this.interestSearch}/>
           </div>
         </div>
         <div>
@@ -41,4 +37,4 @@ class Before extends Component{
     )
   }
 }
-export default Before;
+export default Caulfield;

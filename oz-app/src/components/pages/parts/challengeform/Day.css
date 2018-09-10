@@ -1,0 +1,109 @@
+#processBar{
+  position: absolute;
+  width: 600px;
+  top: 10%;
+  left: 50%;
+  transform: translateX(-50%)
+}
+#processBarTitle{
+  position: absolute;
+  width: 600px;
+  top: 11%;
+  left: 50%;
+  transform: translateX(-50%)
+}
+#processBarTitle span{
+  margin: 0px 70px 10px 70px;
+  color: white;
+  font-weight: 500;
+  font-size: 16px;
+}
+#processBar div div .ant-progress-inner{
+  background: linear-gradient(to right, #FF8264, #FFDFC7);;
+}
+
+#processBar div div div div{
+  background: linear-gradient(45deg, rgba(82,130,255,1) 0%, rgba(111,134,214,1) 100%);
+}
+#challengeForm{
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  width: 55%;
+  transform: translateX(-50%)
+}
+#planItem{
+  margin-bottom: 60px;
+}
+#planItem label{
+  font-weight: 400;
+  font-size: 18px;
+  margin-right: 10px;
+}
+#planItem select{
+  border-radius: 0px;
+}
+#fieldItem{
+  border-radius: 0px;
+  border: none;
+  background-color: rgba(255, 255, 255, 0.0);
+}
+#fieldItemUnderLine{
+  border-bottom:1px solid #5B5B5B;
+}
+#dayButton{
+  float: right;
+  width: 160px;
+  height: 50px;
+  text-align: left;
+  padding-left: 20px;
+  border: 0px solid #444;
+  border-width: 0px 0px 0px 0px;
+  padding: 10px 30px 10px 30px;
+  box-shadow: 0px 1px 15px  rgba(0%,0%,0%,0.3);
+  font-weight: 500;
+  font-size: 16px;
+  color: #5D5D5D;
+}
+#dayButton::before {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  margin-left: -30px;
+  margin-top: -14px;
+  width: 10px;
+  height: 50px;
+  background-color: #FF8567;
+}
+#previousDayButton{
+  float: left;
+  width: 160px;
+  height: 50px;
+  text-align: left;
+  padding-left: 20px;
+  border: 0px solid #444;
+  border-width: 0px 0px 0px 0px;
+  padding: 10px 30px 10px 30px;
+  box-shadow: 0px 1px 15px  rgba(0%,0%,0%,0.3);
+  font-weight: 500;
+  font-size: 16px;
+  color: #5D5D5D;
+}
+#previousDayButton::before {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  margin-left: -30px;
+  margin-top: -14px;
+  width: 10px;
+  height: 50px;
+  background-color: #FF8567;
+}
+#question{
+  float:right;
+  background-image:url('../../../image/question.svg');
+  height:22px;
+  width:22px;
+  background-size: cover;
+  background-repeat: no-repeat;
+}

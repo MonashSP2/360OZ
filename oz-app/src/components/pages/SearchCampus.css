@@ -30,7 +30,8 @@
   height: 80px;
   background-color: #FF8567;
 }
-.droplist{
-  margin-top: 40px;
-  margin-left: 100px;
+#searchCampusStart{
+  position: absolute;
+  top:30%;
+  left: 20%;
 }
