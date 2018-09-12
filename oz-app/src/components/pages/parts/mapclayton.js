@@ -37,7 +37,7 @@ class ClaytonMapSection extends Component {
             viewport: {
                 latitude: -37.90993598321981,
                 longitude: 145.13484224293433,
-                zoom: 14,
+                zoom: 13,
                 bearing: 0,
                 pitch: 0,
                 width: 500,
@@ -119,8 +119,8 @@ class ClaytonMapSection extends Component {
         return hoveredFeature && (
             <div className="tooltip"
                  style={{
-                     left: x,
-                     top: y,
+                     left: 10,
+                     top: 10,
                      fontFamily: 'Montserrat',
                      fontSize: '14px',
                      backgroundColor: '#FF8567',
@@ -129,10 +129,11 @@ class ClaytonMapSection extends Component {
                      padding: '10px 10px 10px 10px',
                      borderRadius: '5px'
                  }}>
+                 <div>Details:</div>
                 <div>Suburb: {hoveredFeature.properties.Suburb}</div>
                 <div>Population of Chinese Resident: {hoveredFeature.properties.Population}</div>
-                <div>Count of Offence: {hoveredFeature.properties.OffenceCount}</div>
-                <div>Rental Rate of One Bed: {hoveredFeature.properties.RentalRate_1Bed_Flat}</div>
+                <div>Count of Crime/Offence (2017): {hoveredFeature.properties.OffenceCount}</div>
+                <div>1-bed Flat Avg. Rental Rate (2018): {hoveredFeature.properties.RentalRate_1Bed_Flat}</div>
             </div>
         );
     }

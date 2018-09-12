@@ -37,7 +37,7 @@ class ParkvilleMapSection extends Component {
             viewport: {
               latitude: -37.783834725984775,
       longitude: 144.95879769626845,
-                zoom: 14,
+                zoom: 13,
                 bearing: 0,
                 pitch: 0,
                 width: 500,
@@ -116,8 +116,8 @@ class ParkvilleMapSection extends Component {
         return hoveredFeature && (
             <div className="tooltip"
                  style={{
-                     left: x,
-                     top: y,
+                     left: 10,
+                     top: 10,
                      fontFamily: 'Montserrat',
                      fontSize: '14px',
                      backgroundColor: '#FF8567',
@@ -126,11 +126,12 @@ class ParkvilleMapSection extends Component {
                      padding: '10px 10px 10px 10px',
                      borderRadius: '5px'
                  }}>
+                 <div>Details:</div>
                 <div>Suburb: {hoveredFeature.properties.Suburb}</div>
                 <div>Population of Chinese Resident: {hoveredFeature.properties.Population}</div>
-                <div>Count of Offence: {hoveredFeature.properties.OffenceCount}</div>
-                <div>Rental Rate of One Bed: {hoveredFeature.properties.RentalRate_1Bed_Flat}</div>
-            </div>
+                <div>Count of Crime/Offence (2017): {hoveredFeature.properties.OffenceCount}</div>
+                <div>1-bed Flat Avg. Rental Rate (2018): {hoveredFeature.properties.RentalRate_1Bed_Flat}</div>
+      </div>
         );
     }
 

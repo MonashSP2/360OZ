@@ -1,5 +1,4 @@
 import React,{Component} from "react";
-import { Select } from 'antd';
 import './form.css';
 
 class LocationForm extends Component{

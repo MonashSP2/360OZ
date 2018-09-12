@@ -23,7 +23,7 @@ class Caulfield extends Component{
       <div>
         <div className="beforeContainer">
           <div className="beforeSection">
-            <span className="beforeTitle">Before you arrive</span>
+            <span className="beforeTitle">Which is the best suburb for you?</span>
             </div>
             <div className="droplist">
               <InterestForm interestSearch={this.interestSearch}/>

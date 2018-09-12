@@ -25,7 +25,7 @@ class Clayton extends Component{
         <div className="beforeContainer">
           <div className="beforeSection">
             <span className="beforeTitle">
-              Find your interest/hobby near by Clayton</span>
+              Which is the best suburb for you?</span>
             </div>
             <div className="droplist">
             <InterestForm interestSearch={this.interestSearch}/>
