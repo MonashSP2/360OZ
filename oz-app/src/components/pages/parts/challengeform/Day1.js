@@ -35,7 +35,7 @@ const Day1 = props => {
             <span id='fieldItemUnderLine'>
             <Field id='fieldItem' name="simCard" component="select">
               <option></option>
-              <option value="vodafone">Vodafone</option>
+              <option value="vadaphone">Vodafone</option>
               <option value="telstra">Telstra</option>
               <option value="optus">Optus</option>
             </Field> </span> <a id="question" target="_blank" rel="noopener noreferrer" href="/usefulinfophone"></a>
