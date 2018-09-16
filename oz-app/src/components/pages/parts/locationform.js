@@ -1,16 +1,21 @@
 import React,{Component} from "react";
 import './form.css';
+import Geolocation from "react-geolocation";
 
 class LocationForm extends Component{
   constructor(props) {
     super(props);
-    this.state = {value: ''};
+    this.state = {value: '',
+      latitude:'',
+      longitude:''
+    };
     this.handleChange = this.handleChange.bind(this);
   }
 
 
   handleChange(event) {
-    this.setState({value: event.target.value});
+    this.setState({latitude: event.target.latitude});
+    this.setState({longitude: event.target.longitude});
   }
 
   render(){
@@ -23,17 +28,42 @@ class LocationForm extends Component{
       <form onSubmit={this.props.regionSearch}>
 
         <div className = 'inputCustomeLocation' >
-          <input
-            id = 'inputLocation'
-            size="large"
-            placeholder="Search your location"
-            name="location"
-            value={this.state.value}
-            onChange={this.handleChange} required/>
+          <Geolocation onChange={this.handleChange}
+            render={({
+              fetchingPosition,
+              position: { coords: { latitude, longitude } = {} } = {},
+              error,
+              getCurrentPosition
+            }) =>
+              <div>
+                {error &&
+                  <div>
+                    {error.message}
+                  </div>}
+                  <div>
+                </div>
+                <input
+                  id = 'inputLocation'
+                  size="large"
+                  placeholder=" "
+                  name="latitude"
+                  value={latitude}
+                  onChange={this.handleChange} required></input>
+                <input
+                    id = 'inputLocation'
+                    size="large"
+                    placeholder="Getting location..."
+                    name="longitude"
+                    value={longitude}
+                    onChange={this.handleChange} required></input>
+              </div>}
+          />
+
         </div>
         <div id="challengeSearchSection">
           <button className="submit" ><span id='searchButton'>Search</span></button>
         </div>
+
     	</form>
       </div>
     )

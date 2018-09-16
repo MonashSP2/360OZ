@@ -13,8 +13,7 @@ class SearchCampus extends Component {
   regionSearch = async (e) => {
     e.preventDefault();
     this.setState({ fireRedirect: true })
-    const text = e.target.location.value
-    console.log(text);
+    const text = e.target.latitude.value +"&"+e.target.longitude.value
     this.setState({
       locationpara: text
     });
