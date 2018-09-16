@@ -8,7 +8,7 @@ import { Route } from 'react-router-dom';
 class ChallengeForm extends Component {
   state = {
     fireRedirect: false,
-    results:'10'
+    results:''
   }
   showResults= async (e) => {
     this.setState({ fireRedirect: true})
