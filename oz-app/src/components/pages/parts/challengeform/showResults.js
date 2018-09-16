@@ -34,6 +34,7 @@ class Results extends Component {
             data: null,
             hoveredFeature: null,
             returnPoints: [],
+            isLoaded:false
         }
     };
 
@@ -84,11 +85,12 @@ class Results extends Component {
         const locationSplit = location.split("&");
         // const resultSplit = results.split("&");
 
-        fetch('http://localhost:3002/ondaychallenge/'+ results.split(",")[0].split(":")[1] +'/station/'+ results.split(",")[2].split(":")[1] +'/' + locationSplit[0] + '/'+ locationSplit[1] + '/')
+        fetch('http://35.189.58.222/ondaychallenge/'+ results.split(",")[0].split(":")[1] +'/station/'+ results.split(",")[2].split(":")[1] +'/' + locationSplit[0] + '/'+ locationSplit[1] + '/')
         // fetch('http://localhost:3002/ondaychallenge/vadafone/commonwealth/restaurant/-33.8670522/151.1957362')
             .then(res => res.json())
             .then(json => {
                 this.setState({
+                    isLoaded: true,
                     returnPoints: json,
                 })
             });
