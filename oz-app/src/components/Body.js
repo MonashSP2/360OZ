@@ -14,6 +14,8 @@ import { Security, SecureRoute, ImplicitCallback } from '@okta/okta-react';
 import Login from './pages/Login';
 
 import After from './pages/After';
+import UsefulInfoPhone from './pages/UsefulInfoPhone';
+import UsefulInfoBank from './pages/UsefulInfoBank';
 
 function onAuthRequired({history}) {
   history.push('/login');
@@ -36,6 +38,8 @@ class Body extends Component {
           <SecureRoute path='/searchparkville' component={SearchParkville}/>
           <SecureRoute path='/searchpeninsula' component={SearchPeninsula}/>
           <SecureRoute exact path='/after' component={After}/>
+          <SecureRoute exact path='/usefulinfophone' component={UsefulInfoPhone}/>
+          <SecureRoute exact path='/usefulinfobank' component={UsefulInfoBank}/>
           <SecureRoute exact path='/locationrequest' component={LocationRequest}/>
           <SecureRoute exact path='/locationrequest/:locationpara' component={PlanTemplate}/>
           <SecureRoute exact path='/locationrequest/:locationpara/challengesubmission' component={Results}/>

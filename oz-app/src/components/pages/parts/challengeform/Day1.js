@@ -6,7 +6,11 @@ import { Progress } from 'antd';
 import './Day.css';
 
 const Day1 = props => {
+
+
   const { handleSubmit } = props;
+
+
   return (
 <div>
       <div className="beforeContainer">
@@ -34,7 +38,7 @@ const Day1 = props => {
               <option value="vadaphone">Vodafone</option>
               <option value="telstra">Telstra</option>
               <option value="optus">Optus</option>
-            </Field> </span> <a id="question" target="_blank" rel="noopener noreferrer" href="#"></a>
+            </Field> </span> <a id="question" target="_blank" rel="noopener noreferrer" href="/usefulinfophone"></a>
             <div>
               <span style={{float:'left',color:'#939393',marginTop:'6px',marginLeft:'26px'}}>
                 Stay connected with friends and family.
@@ -73,7 +77,7 @@ const Day1 = props => {
               <option value="commonwealth">Commonwealth Bank</option>
               <option value="anz">ANZ Bank</option>
               <option value="nab">NAB Bank</option>
-            </Field></span> <a id="question" target="_blank" rel="noopener noreferrer" href="#"></a>
+            </Field></span> <a id="question" target="_blank" rel="noopener noreferrer" href="/usefulinfobank"></a>
             <div>
               <span style={{float:'left',color:'#939393',marginTop:'6px',marginLeft:'26px'}}>
                 Be able to make purchases easily.

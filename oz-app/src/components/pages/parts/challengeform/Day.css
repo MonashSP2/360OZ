@@ -119,3 +119,16 @@
   background-size: cover;
   background-repeat: no-repeat;
 }
+#question:hover:after{
+  content: 'Click to know more details';
+  display:inline-block;
+  background: linear-gradient(45deg, rgba(82,130,255,1) 0%, rgba(111,134,214,1) 100%);
+  margin-left: 30px;
+  margin-top: -12px;
+  width: 120px;
+  color: white;
+  border-radius: 10px;
+  padding: 5px;
+  padding-left: 10px;
+}
+a:hover:after {text-decoration:none;}
