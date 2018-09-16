@@ -47,3 +47,17 @@
   color: #7F7F7F;
   font-size: 16px;
 }
+@media screen and (max-width: 1300px) {
+  #welcomeDesc{
+    width: 400px;
+  }
+  #homeDesc{
+    width: 400px;
+    color: #7F7F7F;
+    font-size: 16px;
+  }
+  .beforeExplanation{
+    position: absolute;
+    left: 35%;
+  }
+}

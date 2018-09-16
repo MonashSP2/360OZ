@@ -88,24 +88,24 @@ class MapSection extends Component{
     this.setState({data, mapStyle});
   };
 
-  _onHover = event => {
-    const {features, srcEvent: {offsetX, offsetY}} = event;
-    const hoveredFeature = features && features.find(f => f.layer.id === 'data');
+    _onHover = event => {
+      const {features, srcEvent: {offsetX, offsetY}} = event;
+      const hoveredFeature = features && features.find(f => f.layer.id === 'data');
 
-    this.setState({hoveredFeature, x: offsetX, y: offsetY});
-  };
+      this.setState({hoveredFeature, x: offsetX, y: offsetY});
+    };
 
-  _renderTooltip() {
-    const {hoveredFeature,x, y} = this.state;
+    _renderTooltip() {
+      const {hoveredFeature,x, y} = this.state;
 
-    return hoveredFeature && (
-      <div className="tooltip"
-        style={{left: 0, top: 0, width:'400px',fontFamily:'Montserrat', fontSize:'14px',backgroundColor:'#FF8567',opacity:1 , color:'#FFF', padding:'10px 10px 10px 10px', borderRadius:'5px'}}>
-        <div>Suburb: {hoveredFeature.properties.Suburb}</div>
-        <div>Population of Chinese Resident: {hoveredFeature.properties.Population}</div>
-      </div>
-    );
-  }
+      return hoveredFeature && (
+        <div className="tooltip"
+          style={{left: 0, top: 0, width:'400px',fontFamily:'Montserrat', fontSize:'14px',backgroundColor:'#FF8567',opacity:1 , color:'#FFF', padding:'10px 10px 10px 10px', borderRadius:'5px'}}>
+          <div>Suburb: {hoveredFeature.properties.Suburb}</div>
+          <div>Population of Chinese Resident: {hoveredFeature.properties.Population}</div>
+        </div>
+      );
+    }
 
     _onViewportChange = viewport => this.setState({
     viewport: {...this.state.viewport, ...viewport}

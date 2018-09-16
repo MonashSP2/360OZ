@@ -7,6 +7,7 @@
   height: 100vh;
   width: 80vw;
 }
+
 .beforeSection{
   background-color: white;
   width: 413px;
@@ -29,6 +30,11 @@
   width: 10px;
   height: 80px;
   background-color: #FF8567;
+}
+.beforeDesc{
+  position: absolute;
+  top:15%;
+  left: 30%;
 }
 #searchCampusStart{
   position: absolute;

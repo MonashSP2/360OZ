@@ -8,16 +8,25 @@ class Header extends Component{
 
   render() {
     return (
+      <div>
+        <input type="checkbox" id="nav" class="hidden"/>
+
+        <label for="nav" class="nav-btn">
+                        <i></i>
+                        <i></i>
+                        <i></i>
+                  </label>
         <nav className="navBar">
+          <Link id='logo_link' to='/'><img src={logo} alt="logo" height="40" id='logo_img'></img></Link>
+        </nav>
+        <div class='navWrapper'>
           <ul>
-            <Link to='/'><img src={logo} alt="logo" height="40" id='logo_img'></img></Link>
-            <span id='slogan'>A view just for you</span>
             <li><Link to='/'>HOME</Link></li>
             <li><Link to='/searchcampus'>BEFORE</Link></li>
             <li><Link to='/locationrequest'>AFTER</Link></li>
           </ul>
-
-        </nav>
+        </div>
+        </div>
     )
   }
 }

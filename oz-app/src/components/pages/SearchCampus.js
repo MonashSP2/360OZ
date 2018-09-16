@@ -29,7 +29,14 @@ class SearchCampus extends Component {
       <div className="button-container">
         <BeforeButton />
       </div>
+      <div className="beforeDesc">
+        <h1 style={{paddingBottom: '20px'}} id='homeTitle'>Explore Suburbs</h1>
+        <p style={{paddingBottom: '100px', fontSize:'16px', color:'#7F7F7F',width:'600px'}}>Find the <span style={{color:'#F08B6F'}}>best suburb</span> based on your preferred lifestyle, interests, demographics and other essential information. 
+
+</p>
+      </div>
       <div id="searchCampusStart">
+
         <div className="droplist">
         <Form regionSearch={this.regionSearch}/>
           {fireRedirect && (

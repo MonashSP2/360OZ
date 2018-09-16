@@ -17,8 +17,8 @@ class LocationForm extends Component{
     return(
       <div>
       <div>
-        <h1 style={{paddingBottom: '20px'}} id='homeTitle'>3 Day Challenge...</h1>
-        <p style={{paddingBottom: '100px', fontSize:'16px'}}>This 3-day challenge is designed to <span style={{color:'#F08B6F'}}>practically plan</span> for your first 3 days in Melbourne involving activities that will help you transition into this new environment. There will be lists of things to do and an optimal route for you to follow.</p>
+        <h1 style={{paddingBottom: '20px'}} id='homeTitle'>3 Day Plan</h1>
+        <p style={{paddingBottom: '100px', fontSize:'16px', color:'#7F7F7F'}}>This 3-day plan is designed to <span style={{color:'#F08B6F'}}>practically plan</span> for your first 3 days in Melbourne involving activities that will help you transition into this new environment. There will be lists of things to do and an optimal route for you to follow.</p>
       </div>
       <form onSubmit={this.props.regionSearch}>
 

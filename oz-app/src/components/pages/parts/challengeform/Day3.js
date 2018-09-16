@@ -15,7 +15,7 @@ const Day3 = props => {
         <div className="beforeContainer">
             <div className="beforeSection">
               <span className="beforeTitle">
-                Day 3 : Aussie Exploration Day</span>
+                Immerse Day</span>
             </div>
         </div>
 

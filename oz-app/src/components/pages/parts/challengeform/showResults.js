@@ -13,6 +13,7 @@ const MAPBOX_TOKEN = 'pk.eyJ1IjoicHNvbjAwMDEiLCJhIjoiY2pmeGZwdDc2NGEyNDMybnZuMDU
 class Results extends Component{
   constructor(props) {
     super(props);
+    this.myRef = React.createRef();
     this.state = {
       viewport: {
         latitude: -25.2744,
@@ -48,7 +49,6 @@ class Results extends Component{
     }
 
     componentWillUpdate(campusPre){
-      console.log(this.props.campus,campusPre.campus);
       if(this.props.campus !== campusPre.campus){
         if( campusPre.campus == 'Clayton'){
           this._goToViewport(-37.9150,145.1300);
@@ -121,15 +121,14 @@ class Results extends Component{
     _onStyleChange = popStyle => this.setState({popStyle});
 
 
+    _redraw() {
+      console.log(this.myRef.current);
+    }
   render(){
     const location = this.props.match.params.locationpara;
     const results = this.props.location.state.results;
     const {viewport, settings, mapStyle} = this.state;
-
-    console.log(this.props);
-
     return (
-
       <div>
         <div>{location}</div>
         <div>{results}</div>
@@ -137,10 +136,12 @@ class Results extends Component{
           <MapGL
            {...viewport}
            {...settings}
+           ref = {this.myRef}
            mapStyle={mapStyle}
            onViewportChange={this._onViewportChange}
            dragToRotate={false}
            mapboxApiAccessToken={MAPBOX_TOKEN}>
+           {this._redraw()}
        </MapGL>
      </div>
       </div>

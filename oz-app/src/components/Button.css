@@ -27,7 +27,7 @@
   background-image: url('./image/arrow_forward.svg');
   display: inline-block;
   position: absolute;
-  margin-left: 50px;
+  margin-left: 240px;
   margin-top: 0px;
   background-repeat: no-repeat;
   width: 7%;
@@ -66,8 +66,25 @@
   height: 45%;
 }
 #homeButton{
-  font-family:'Montserrat', sans-serif;
   font-weight: 500;
   font-size: 20px;
   color: #5D5D5D;
+}
+
+@media screen and (max-width: 1300px) {
+  .beforeButton{
+    width: 400px;
+  }
+  .beforeButton::after {
+    margin-left: 130px;
+    width: 8%;
+  }
+  .arriveButton{
+    width: 400px;
+  }
+  .arriveButton::after {
+    margin-left: 140px;
+    width: 8%;
+  }
+
 }

@@ -76,7 +76,7 @@ export default withAuth(class Home extends Component {
         <div className="beforeExplanation" style={{marginTop:'210px'}}>
           <div>
 
-          <p id='homeTitle'>3 Day Challenge...</p>
+          <p id='homeTitle'>3 Day Plan</p>
           </div>
           <div id='homeDesc'>
           <p >Exciting 3-day plan to arrive, survive and immerse in Melbourne</p>
