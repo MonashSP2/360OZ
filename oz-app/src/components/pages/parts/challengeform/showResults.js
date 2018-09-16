@@ -72,14 +72,6 @@ class Results extends Component {
     _loadData = data => {
 
         updatePopulation(data, f => f.properties.chinese_population);
-
-        const mapStyle = defaultMapStyle
-        // Add geojson source to map
-            .setIn(['sources', 'chinese_population'], fromJS({type: 'geojson', data}))
-            // Add point layer to map
-            .set('layers', defaultMapStyle.get('layers').push(dataLayer));
-
-        this.setState({data, mapStyle});
         const location = this.props.match.params.locationpara;
         const results = this.props.location.state.results;
         const locationSplit = location.split("&");
@@ -93,6 +85,15 @@ class Results extends Component {
                     returnPoints: json,
                 })
             });
+
+        const mapStyle = defaultMapStyle
+        // Add geojson source to map
+            .setIn(['sources', 'chinese_population'], fromJS({type: 'geojson', data}))
+            // Add point layer to map
+            .set('layers', defaultMapStyle.get('layers').push(dataLayer));
+
+        this.setState({data, mapStyle});
+
     };
 
 
@@ -185,7 +186,7 @@ class Results extends Component {
         return (
             <div>
                 <div>{location}</div>
-                <div>{results}</div>
+                <div>{results},{results.split(",")[0].split(":")[1]}</div>
                 <div>{returnPoints.map(item => (
                     <li key={item.id}>
                         {item.name},{item.latitude},{item.longitude}
