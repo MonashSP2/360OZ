@@ -9,6 +9,8 @@ import {json as requestJson} from 'd3-request';
 import SchoolPin from "../marker-data/school-pin";
 import InterestPin from '../marker-data/interest-pin';
 import CityInfo from "../marker-data/city-info";
+import DeckGL, {LineLayer} from 'deck.gl';
+import {StaticMap} from 'react-map-gl';
 
 
 const MAPBOX_TOKEN = 'pk.eyJ1IjoicHNvbjAwMDEiLCJhIjoiY2pmeGZwdDc2NGEyNDMybnZuMDU0NTh6ZiJ9.NIPbcggFfW6c0tVUp9gvdA';
@@ -19,8 +21,8 @@ class Results extends Component {
         this.myRef = React.createRef();
         this.state = {
             viewport: {
-                latitude: -37.90993598321981,
-                longitude: 145.13484224293433,
+                latitude: -37.8764927,
+                longitude: 145.0437792,
                 zoom: 13,
                 bearing: 0,
                 pitch: 0,
@@ -34,7 +36,8 @@ class Results extends Component {
             data: null,
             hoveredFeature: null,
             returnPoints: [],
-            isLoaded: false
+            isLoaded: false,
+            returnCoordinates: []
         }
     };
 
@@ -47,6 +50,49 @@ class Results extends Component {
                 this._loadData(response);
             }
         });
+        const map = this.myRef.current.getMap();
+        console.log(map);
+
+        const location = this.props.match.params.locationpara;
+        const results = this.props.location.state.results;
+        const returnCoor = this.state.returnCoordinates;
+        const locationSplit = location.split("&");
+
+        map.on('load', function () {
+            console.log(returnCoor);
+            map.addLayer({
+                "id": "route",
+                "type": "line",
+                "source": {
+                    "type": "geojson",
+                    "data": {
+                        "type": "Feature",
+                        "properties": {},
+                        "geometry": {
+                            "type": "LineString",
+                            "coordinates":
+                            // returnCoor,
+                                [
+                                    [locationSplit[1],locationSplit[0]],
+                                    [145.0569391,-37.8889451],
+                                    [145.0302512, -37.8667146],
+                                    [145.0287011,-37.8609695],
+                                ]
+                        }
+                    }
+                },
+                "layout": {
+                    "line-join": "round",
+                    "line-cap": "round"
+                },
+                "paint": {
+                    "line-color": "#888888",
+                    "line-width": 8
+                }
+            });
+        });
+
+
     }
 
     componentWillUnmount() {
@@ -75,15 +121,91 @@ class Results extends Component {
         const location = this.props.match.params.locationpara;
         const results = this.props.location.state.results;
         const locationSplit = location.split("&");
+        console.log(results);
+        let resultArr = results.split(",");
+        // let resultA = String({"aaaaa": "a"});
+        let resultArray = [];
+        for (let i = 0 ; i < 4;i++){
+            resultArray[i]='a';
+        }
+        for (let i = 0;i < resultArr.length;i++){
+            resultArray[i]=resultArr[i].split(":")[1];
+            console.log(resultArr[i].split(":")[1])
+        }
+        // if (resultArr.length < 4) {
+        //     resultArr.push(resultA);
+        //     resultArr.push(resultA);
+        //     resultArr.push(resultA);
+        // }
+        console.log(resultArray);
+
         // const resultSplit = results.split("&");
-        fetch('http://35.189.58.222/ondaychallenge/' + results.split(",")[0].split(":")[1] + '/station/' + results.split(",")[2].split(":")[1] + '/' + locationSplit[0] + '/' + locationSplit[1] + '/')
+        fetch('http://35.189.58.222/ondaychallenge/' + resultArray[0] + '/railwaystation/' + resultArray[2] + '/' + locationSplit[0] + '/' + locationSplit[1] + '/')
         // fetch('http://localhost:3002/ondaychallenge/vadafone/commonwealth/restaurant/-33.8670522/151.1957362')
             .then(res => res.json())
             .then(json => {
                 this.setState({
                     isLoaded: true,
                     returnPoints: json,
-                })
+                });
+                let lon = this.state.returnPoints;
+                console.log(lon);
+
+                fetch('https://api.mapbox.com/directions/v5/mapbox/walking/' + lon[0].longitude + ',' + lon[0].latitude + ';' + lon[1].longitude + ',' + lon[1].latitude + '?geometries=geojson&access_token=pk.eyJ1IjoicHNvbjAwMDEiLCJhIjoiY2pmeGZwdDc2NGEyNDMybnZuMDU0NTh6ZiJ9.NIPbcggFfW6c0tVUp9gvdA')
+                    .then(res => res.json())
+                    .then(res => {
+                        this.setState({
+                            isLoaded: true,
+                            returnCoordinates: res.routes[0].geometry.coordinates,
+                        });
+
+                        const location = this.props.match.params.locationpara;
+                        const results = this.props.location.state.results;
+                        const returnCoor = this.state.returnCoordinates;
+                        const locationSplit = location.split("&");
+                        //const arr1 = 'test';
+                        console.log(returnCoor);
+
+                        console.log("test");
+
+                        const map = this.myRef.current.getMap();
+                        console.log(map);
+                        map.on('load', function () {
+                            console.log(returnCoor);
+                            map.addLayer({
+                                "id": "route",
+                                "type": "line",
+                                "source": {
+                                    "type": "geojson",
+                                    "data": {
+                                        "type": "Feature",
+                                        "properties": {},
+                                        "geometry": {
+                                            "type": "LineString",
+                                            "coordinates":
+                                            // returnCoor,
+                                                [
+                                                    [locationSplit[1], locationSplit[0]],
+                                                    [145.0569391, -37.8889451],
+                                                    [145.0302512, -37.8667146],
+                                                    [145.0287011, -37.8609695],
+                                                ]
+                                        }
+                                    }
+                                },
+                                "layout": {
+                                    "line-join": "round",
+                                    "line-cap": "round"
+                                },
+                                "paint": {
+                                    "line-color": "#888888",
+                                    "line-width": 8
+                                }
+                            });
+                        });
+
+
+                    });
             });
 
         const mapStyle = defaultMapStyle
@@ -97,33 +219,33 @@ class Results extends Component {
     };
 
 
-    _onHover = event => {
-        const {features, srcEvent: {offsetX, offsetY}} = event;
-        const hoveredFeature = features && features.find(f => f.layer.id === 'data');
-        this.setState({hoveredFeature, x: offsetX, y: offsetY});
-    };
-
-    _renderTooltip() {
-        const {hoveredFeature, x, y} = this.state;
-        return hoveredFeature && (
-            <div className="tooltip"
-                 style={{
-                     left: 0,
-                     top: 0,
-                     width: '400px',
-                     fontFamily: 'Montserrat',
-                     fontSize: '14px',
-                     backgroundColor: '#FF8567',
-                     opacity: 1,
-                     color: '#FFF',
-                     padding: '10px 10px 10px 10px',
-                     borderRadius: '5px'
-                 }}>
-                <div>Suburb: {hoveredFeature.properties.Suburb}</div>
-                <div>Population of Chinese Resident: {hoveredFeature.properties.Population}</div>
-            </div>
-        );
-    }
+    // _onHover = event => {
+    //     const {features, srcEvent: {offsetX, offsetY}} = event;
+    //     const hoveredFeature = features && features.find(f => f.layer.id === 'data');
+    //     this.setState({hoveredFeature, x: offsetX, y: offsetY});
+    // };
+    //
+    // _renderTooltip() {
+    //     const {hoveredFeature, x, y} = this.state;
+    //     return hoveredFeature && (
+    //         <div className="tooltip"
+    //              style={{
+    //                  left: 0,
+    //                  top: 0,
+    //                  width: '400px',
+    //                  fontFamily: 'Montserrat',
+    //                  fontSize: '14px',
+    //                  backgroundColor: '#FF8567',
+    //                  opacity: 1,
+    //                  color: '#FFF',
+    //                  padding: '10px 10px 10px 10px',
+    //                  borderRadius: '5px'
+    //              }}>
+    //             <div>Suburb: {hoveredFeature.properties.Suburb}</div>
+    //             <div>Population of Chinese Resident: {hoveredFeature.properties.Population}</div>
+    //         </div>
+    //     );
+    // }
 
     _onViewportChange = viewport => this.setState({
         viewport: {...this.state.viewport, ...viewport}
@@ -152,7 +274,8 @@ class Results extends Component {
 
 
     _redraw() {
-        console.log(this.myRef.current);
+        //
+        // console.log(this.myRef.current);
     }
 
     _showResultPoints = (city, index) => {
@@ -181,7 +304,7 @@ class Results extends Component {
     render() {
         const location = this.props.match.params.locationpara;
         const results = this.props.location.state.results;
-        const {viewport, settings, mapStyle, returnPoints} = this.state;
+        const {viewport, settings, mapStyle, returnPoints, returnCoordinates} = this.state;
         const locationSplit = location.split("&");
         return (
             <div>
@@ -193,12 +316,18 @@ class Results extends Component {
                     </li>
                 ))};
                 </div>
+                <div>{returnCoordinates.map(item => (
+                    <li key={item.id}>
+                        {item}
+                    </li>
+                ))};
+                </div>
                 <div id="mapBox">
                     <MapGL
                         {...viewport}
                         {...settings}
                         ref={this.myRef}
-                        mapStyle={mapStyle}
+                        // ref={(map) => { this.map = map; }} mapStyle={mapStyle}
                         onViewportChange={this._onViewportChange}
                         dragToRotate={false}
                         mapboxApiAccessToken={MAPBOX_TOKEN}>
