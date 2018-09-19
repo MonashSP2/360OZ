@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="61px" height="61px" viewBox="0 0 61 61" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+    <title>baseline-directions-24px</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="0%" y1="100%" x2="100%" y2="0%" id="linearGradient-1">
+            <stop stop-color="#5282FF" offset="0%"></stop>
+            <stop stop-color="#6F86D6" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Loading-page-start" transform="translate(-637.000000, -526.000000)">
+            <g id="baseline-directions-24px" transform="translate(631.000000, 520.000000)">
+                <path d="M66.1076519,34.3492123 L38.6507877,6.89234809 C37.4609902,5.70255064 35.5390098,5.70255064 34.3492123,6.89234809 L6.89234809,34.3492123 C5.70255064,35.5390098 5.70255064,37.4609902 6.89234809,38.6507877 L34.3492123,66.1076519 C35.5390098,67.2974494 37.4609902,67.2974494 38.6507877,66.1076519 L66.1076519,38.6507877 C67.2974494,37.4914979 67.2974494,35.5695174 66.1076519,34.3492123 Z M42.5862716,44.1421605 L42.5862716,36.5152538 L30.3832208,36.5152538 L30.3832208,45.6675419 L24.2816954,45.6675419 L24.2816954,33.4644911 C24.2816954,31.7865716 25.6545386,30.4137284 27.3324581,30.4137284 L42.5862716,30.4137284 L42.5862716,22.7868217 L53.263941,33.4644911 L42.5862716,44.1421605 Z" id="Shape" fill="url(#linearGradient-1)" fill-rule="nonzero"></path>
+                <polygon id="Shape" points="0 0 73 0 73 73 0 73"></polygon>
+            </g>
+        </g>
+    </g>
+</svg>

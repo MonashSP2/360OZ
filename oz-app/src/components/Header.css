@@ -3,11 +3,13 @@
   margin-top:  12px;
   margin-left: 20px;
   float: left;
+  z-index: 999;
 }
 
 #logo_img{
   padding-bottom: 10px;
   border-bottom:2px solid #fff;
+  z-index: 999;
 }
 #logo_link::after {
     content: " A view just for you";

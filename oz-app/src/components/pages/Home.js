@@ -79,7 +79,7 @@ export default withAuth(class Home extends Component {
           <p id='homeTitle'>3 Day Plan</p>
           </div>
           <div id='homeDesc'>
-          <p >Exciting 3-day plan to arrive, survive and immerse in Melbourne</p>
+          <p >Exciting 3-day plan to arrive, revive and immerse in Melbourne</p>
           </div>
         </div>
       </div>

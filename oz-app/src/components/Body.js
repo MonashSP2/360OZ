@@ -25,8 +25,8 @@ class Body extends Component {
   render() {
     return (
       <main>
-        <Security issuer='https://dev-339073.oktapreview.com/oauth2/default'
-                  client_id='0oag8mx1mu7LyxDtk0h7'
+        <Security issuer='https://dev-801046.oktapreview.com/oauth2/default'
+                  client_id='0oagb60a0cBf8bi0F0h7'
                   redirect_uri={window.location.origin + '/implicit/callback'}
                   onAuthRequired={onAuthRequired} >
         <Switch>
@@ -43,7 +43,7 @@ class Body extends Component {
           <SecureRoute exact path='/locationrequest' component={LocationRequest}/>
           <SecureRoute exact path='/locationrequest/:locationpara' component={PlanTemplate}/>
           <SecureRoute exact path='/locationrequest/:locationpara/challengesubmission' component={Results}/>
-            <Route path='/login' render={() => <Login baseUrl='https://dev-339073.oktapreview.com' />} />
+            <Route path='/login' render={() => <Login baseUrl='https://dev-801046.oktapreview.com' />} />
             <Route path='/implicit/callback' component={ImplicitCallback} />
       </Switch>
       </Security>

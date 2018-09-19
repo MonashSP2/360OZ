@@ -6,17 +6,13 @@ import { Progress } from 'antd';
 import './Day.css';
 
 const Day1 = props => {
-
-
   const { handleSubmit } = props;
-
-
   return (
 <div>
       <div className="beforeContainer">
           <div className="beforeSection">
             <span className="beforeTitle">
-              Arrive Day</span>
+              Arrive</span>
           </div>
       </div>
       <form id="challengeForm" onSubmit={handleSubmit}>
@@ -53,7 +49,8 @@ const Day1 = props => {
             component="input"
             type="checkbox"
             style={{marginRight:'10px'}}
-          /><label htmlFor="mykiCard"><span>Get a Myki card</span></label>
+          />
+        <label htmlFor="mykiCard"><span>Get a Myki card</span></label>
           <div>
             <span style={{float:'left',color:'#939393',marginTop:'6px',marginLeft:'26px'}}>
               Be able to use public transport.
@@ -98,12 +95,12 @@ const Day1 = props => {
             <span id='fieldItemUnderLine'>
             <Field id='fieldItem' name="goCampus" component="select">
               <option></option>
-              <option value="clayton">Clayton</option>
-              <option value="caulfield">Caulfield</option>
+              <option value="Monashclayton">Clayton</option>
+              <option value="Monashcaulfield">Caulfield</option>
             </Field>
             <div>
               <span style={{float:'left',color:'#939393',marginTop:'6px',marginLeft:'26px'}}>
-                Be able to make purchases easily.
+                Familiarise on how to get to your University.
               </span>
             </div>
             </span>

@@ -17,7 +17,6 @@ import {updatePopulation} from './utils';
 import {fromJS} from 'immutable';
 import {json as requestJson} from 'd3-request';
 import CityInfo from './marker-data/city-info';
-import InterestInfo from './marker-data/interest-info';
 
 
 const MAPBOX_TOKEN = 'pk.eyJ1IjoicHNvbjAwMDEiLCJhIjoiY2pmeGZwdDc2NGEyNDMybnZuMDU0NTh6ZiJ9.NIPbcggFfW6c0tVUp9gvdA';

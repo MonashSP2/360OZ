@@ -414,7 +414,7 @@ class ClaytonMapSection extends Component {
                               <span  style={{fontSize:'10px'}}>6000</span>
                               <div style={{paddingTop:'20px'}}>
                               <span style={{fontSize:'10px'}}>
-                                Data Authorised from Australia Burae Statics
+                                Data Source : Australian Bureau of Statistics
                               </span>
                               </div>
                             </div>

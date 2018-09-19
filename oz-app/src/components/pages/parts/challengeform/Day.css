@@ -31,7 +31,7 @@
   font-size: 16px;
 }
 #processBar div div .ant-progress-inner{
-  background: linear-gradient(to right, #FF8264, #FFDFC7);;
+  background: linear-gradient(to right, #FF8264, #FFDFC7);
 }
 
 #processBar div div div div{

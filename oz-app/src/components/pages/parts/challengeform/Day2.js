@@ -17,7 +17,7 @@ const Day2 = props => {
       <div className="beforeContainer">
           <div className="beforeSection">
             <span className="beforeTitle">
-              Revive Day</span>
+              Revive</span>
           </div>
       </div>
   <form id="challengeForm" onSubmit={handleSubmit}>
